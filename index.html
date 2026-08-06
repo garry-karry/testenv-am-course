@@ -219,6 +219,17 @@
   .kb-section.active{display:block;}
   .kb-empty-state{text-align:center; padding:36px 20px;}
   .kb-empty-state p{color:var(--text-dim); font-size:14px; margin:12px 0 0;}
+  .journal-next-intro{font-size:13.5px; color:var(--text-dim); margin:-6px 0 16px;}
+  .upcoming-workshops{margin-top:28px; padding-top:22px; border-top:1px solid var(--line);}
+  .upcoming-workshops-label{
+    font-family:var(--mono); font-size:11.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--text-dim2); margin-bottom:12px;
+  }
+  .upcoming-workshops-list{display:flex; flex-wrap:wrap; gap:9px;}
+  .uw-chip{
+    font-size:13px; color:var(--text-dim); background:var(--surface); border:1px solid var(--line);
+    border-radius:100px; padding:7px 15px;
+  }
   .kb-reading-list{display:flex; flex-direction:column; gap:14px; margin-bottom:22px;}
   .kb-reading-card{
     background:var(--surface-2); border:1px solid var(--line); border-left:3px solid var(--gold);
@@ -1055,6 +1066,13 @@
   .about-copy p{color:var(--text-dim); font-size:15.5px; margin:0 0 16px;}
   .about-copy p:last-of-type{margin-bottom:22px;}
   .about-signature{display:flex; flex-direction:column; gap:2px;}
+  .about-journal-link{
+    display:inline-flex; align-items:center; gap:6px; margin-top:16px; font-size:13.5px;
+    color:var(--teal); text-decoration:none; cursor:pointer;
+  }
+  .about-journal-link:hover{text-decoration:underline;}
+  .about-journal-link .arrow{transition:transform .15s ease;}
+  .about-journal-link:hover .arrow{transform:translateX(3px);}
   /* ---------- TESTIMONIALS ---------- */
   .testimonials{border-top:1px solid var(--line);}
   .testimonials-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 300px)); gap:18px;}
@@ -1371,6 +1389,16 @@
         <li class="soon"><span class="ctl-num">7</span><span data-i18n="module7_title"></span><span class="soon-badge-mini" data-i18n="soon_badge"></span></li>
       </ul>
       <button class="btn-primary" onclick="showPage('modules')" data-i18n="curriculum_teaser_cta"></button>
+
+      <div class="upcoming-workshops">
+        <div class="upcoming-workshops-label" data-i18n="upcoming_workshops_label"></div>
+        <div class="upcoming-workshops-list">
+          <span class="uw-chip" data-i18n="journal_next1_title"></span>
+          <span class="uw-chip" data-i18n="journal_next2_title"></span>
+          <span class="uw-chip" data-i18n="journal_next3_title"></span>
+          <span class="uw-chip" data-i18n="journal_next4_title"></span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1429,6 +1457,9 @@
             <span class="about-name">Maria Logimakhova</span>
             <span class="about-role" data-i18n="about_role"></span>
           </div>
+          <a class="about-journal-link" onclick="openJournalConferences(); return false;" href="#journal">
+            <span data-i18n="about_journal_link"></span><span class="arrow">→</span>
+          </a>
         </div>
       </div>
     </div>
@@ -1696,22 +1727,6 @@
     </div>
   </section>
 
-  <!-- ============ DONATE ============ -->
-  <section class="section donate reveal">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="kicker" data-i18n="donate_kicker"></span>
-        <h2 data-i18n="donate_h2"></h2>
-        <p class="section-sub" data-i18n="donate_sub"></p>
-      </div>
-      <div class="donate-widget-wrap">
-        <a href="https://nowpayments.io/donation?api_key=742c86c9-efcd-47d9-9ad2-5260606ce8ab" target="_blank" rel="noreferrer noopener">
-          <img src="https://nowpayments.io/images/embeds/donation-button-black.svg" alt="Crypto donation button by NOWPayments">
-        </a>
-      </div>
-    </div>
-  </section>
-
   <!-- ============ FAQ ============ -->
   <section class="section faq reveal">
     <div class="wrap">
@@ -1769,6 +1784,22 @@
             <p data-i18n="faq_a4"></p>
           </div>
         </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DONATE ============ -->
+  <section class="section donate reveal">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker" data-i18n="donate_kicker"></span>
+        <h2 data-i18n="donate_h2"></h2>
+        <p class="section-sub" data-i18n="donate_sub"></p>
+      </div>
+      <div class="donate-widget-wrap">
+        <a href="https://nowpayments.io/donation?api_key=742c86c9-efcd-47d9-9ad2-5260606ce8ab" target="_blank" rel="noreferrer noopener">
+          <img src="https://nowpayments.io/images/embeds/donation-button-black.svg" alt="Crypto donation button by NOWPayments">
+        </a>
       </div>
     </div>
   </section>
@@ -2632,7 +2663,26 @@
         </div>
 
         <div class="kb-section" id="journal-section-next">
-          <div class="kb-empty-state"><span class="soon-badge-mini" data-i18n="soon_badge"></span><p data-i18n="journal_empty_next"></p></div>
+          <h3 class="kb-articles-heading" data-i18n="journal_next_heading"></h3>
+          <p class="journal-next-intro" data-i18n="journal_next_intro"></p>
+          <div class="kb-reading-list">
+            <div class="kb-reading-card">
+              <h4 data-i18n="journal_next1_title"></h4>
+              <p data-i18n="journal_next1_body"></p>
+            </div>
+            <div class="kb-reading-card">
+              <h4 data-i18n="journal_next2_title"></h4>
+              <p data-i18n="journal_next2_body"></p>
+            </div>
+            <div class="kb-reading-card">
+              <h4 data-i18n="journal_next3_title"></h4>
+              <p data-i18n="journal_next3_body"></p>
+            </div>
+            <div class="kb-reading-card">
+              <h4 data-i18n="journal_next4_title"></h4>
+              <p data-i18n="journal_next4_body"></p>
+            </div>
+          </div>
         </div>
 
         <div class="kb-section" id="journal-section-essays">
@@ -2745,8 +2795,8 @@
       hero_eyebrow: "6-module course · for account managers &amp; CS teams",
       hero_h1: 'Why your best account managers keep <span class="hl">losing clients</span>',
       hero_sub: 'Built inside a live <b>Poker &amp; Casino Product</b> Customer Success team, drowning in "we\'re working on it" tickets. Six modules, real scripts, zero fluff — for any Account Manager who has to talk to humans about deadlines.',
-      hero_stat1: "<b>6</b> modules",
-      hero_stat2: "<b>~4h 35m</b> total",
+      hero_stat1: "<b>6</b> modules with practice assignments",
+      hero_stat2: "<b>~5h</b> total",
       hero_stat3: "role-play + real scripts",
       hero_stat4: "0 fluffy theory",
       hero_cta: "Start Module 1 →",
@@ -2892,6 +2942,16 @@
       journal_posts_heading: "Posts",
       journal_empty_about: "A proper bio and current-focus page is coming together — check back soon.",
       journal_empty_next: "Notes on what's next for the course are on their way — check back soon.",
+      journal_next_heading: "What I'm doing next",
+      journal_next_intro: "I'm putting together new workshops right now — here's what's currently in the works.",
+      journal_next1_title: "Cognitive biases in a manager's work — and what to do about them",
+      journal_next1_body: "How heuristics and cognitive biases quietly shape an account manager's decisions — from anchoring in price negotiations to confirmation bias when judging account health — and practical ways to counter them.",
+      journal_next2_title: "Responding to passive-aggressive communication at work",
+      journal_next2_body: "Practical techniques for spotting passive aggression in messages and calls — and working ways to name it directly, without escalating the conflict or swallowing it.",
+      journal_next3_title: "Communicating across client nationalities",
+      journal_next3_body: "How cultural context shifts expectations around response pace, directness, and nonverbal cues — and how to adapt your communication style while staying yourself.",
+      journal_next4_title: "Negotiation: argumentation, counter-argumentation, and handling objections",
+      journal_next4_body: "A structure for strong arguments, a breakdown of common client objections, and counter-argument techniques that don't turn a negotiation into a raised-voice argument.",
       journal_empty_essays: "Longer opinion pieces are in the works — check back soon.",
       journal_post1_title: "My first ICE London, 2024",
       journal_post1_dek: "February 2024 · ICE London, ExCeL",
@@ -2899,7 +2959,7 @@
       journal_post1_p2: "At that point I'd only been at EvenBet for eight months, and it felt like there was still so much I didn't fully understand. It turned out far better than I expected: colleagues jumped in online whenever I needed backup, which let me either answer on the spot or circle back to a lead a bit later with a precise answer.",
       journal_post1_p3: "The pace of the show was extreme — some days there wasn't even time to eat — but it was worth every bit of it. It turned out to be an incredible crash course in Customer Success itself: reading a lead's actual pain or request on the spot, and pulling together a workable answer from whatever I knew about the product and the industry.",
       journal_post2_title: "SBC Lisbon, 2024",
-      journal_post2_dek: "2024 · Lisbon",
+      journal_post2_dek: "September 2024 · Lisbon",
       journal_post2_p1: "My second exhibition was SBC Lisbon 2024. After ICE, I felt like a far more confident presenter: in the months between London and Lisbon I'd run more than 100 online pre-sale demos for leads. My product knowledge had deepened considerably, and by then I'd become a team lead myself, with four to five people reporting to me across projects at different stages.",
       journal_post2_p2: "The show itself was quieter than ICE — noticeably fewer demos — and this time I had company: another team lead from the AM Casino team. Even with everything I now knew about the product, there were still questions that needed checking with the tech team or other colleagues. But I had enough confidence and persuasiveness as a presenter that a few leads came back on a different day of the show specifically to sign contracts.",
 
@@ -2917,6 +2977,7 @@
       curriculum_teaser_h2: "Six modules. Every one ends with a script you can use on your next call.",
       curriculum_teaser_sub: "Each module opens in its own tab, in order — you unlock the next one only after marking the current one complete, so the material builds instead of turning into a pile of open tabs.",
       curriculum_teaser_cta: "Open the Course Modules →",
+      upcoming_workshops_label: "New workshops in the works",
       ctl_preview_badge: "free preview →",
 
       sitemap_kicker: "What's on this site",
@@ -3050,14 +3111,15 @@
       about_p2: "In almost 10 years in tech, I've worked as a PM at outsourcing companies (fintech, SaaS, e-commerce) and as an Account Manager in Customer Success in the iGaming industry. Right now I lead the AM team at EvenBet Gaming, an international company with a genuinely great product.",
       about_p3: "Along the way I went from \"just solving problems and forwarding information to the team\" to \"selling the service as a product and measuring the team's work through the client's business metrics.\"",
       about_role: "Team Leader, Account Management · EvenBet Gaming",
+      about_journal_link: "Read my conference notebook",
       testimonials_kicker: "From people who took it",
       testimonials_h2: "Real reactions, not staged quotes",
       testimonials_sub: "Screenshots from actual students — more get added as they come in.",
       testimonial1_caption: "On the Module 3 homework quiz",
 
-      donate_kicker: "Enjoying the course?",
+      donate_kicker: "For the free content",
       donate_h2: "Buy me a coffee",
-      donate_sub: "This course is a side project — if it's helped you, a small crypto tip is always appreciated (and never required).",
+      donate_sub: "The Journal, the free Knowledge Base articles, and Module 1 are open to everyone, no subscription needed. If they've helped you and a subscription isn't the right step yet, a small crypto tip is always welcome — never required.",
       faq_kicker: "Before you decide",
       faq_h2: "A few honest answers",
       faq_sub: "The questions that usually come up right before checkout.",
@@ -3197,8 +3259,8 @@
       hero_eyebrow: "Курс из 6 модулей · для аккаунт-менеджеров и CS",
       hero_h1: 'Почему даже лучшие аккаунт-менеджеры <span class="hl">теряют клиентов</span>',
       hero_sub: 'Курс родился внутри реальной команды клиентского успеха продукта <b>Poker &amp; Casino</b> — команды, которая тонула в тикетах «мы работаем над этим» и постепенно училась говорить иначе. В нём шесть модулей и настоящие рабочие скрипты, без лишней воды — для каждого аккаунт-менеджера, которому приходится объяснять людям, что происходит со сроками.',
-      hero_stat1: "<b>6</b> модулей",
-      hero_stat2: "<b>~4 ч 35 мин</b> всего",
+      hero_stat1: "<b>6</b> модулей с заданиями для отработки",
+      hero_stat2: "<b>~5 ч</b> всего",
       hero_stat3: "ролевые игры + реальные скрипты",
       hero_stat4: "0 воды и просто теории",
       hero_cta: "Начать модуль 1 →",
@@ -3344,6 +3406,16 @@
       journal_posts_heading: "Записи",
       journal_empty_about: "Полноценная страница обо мне и о том, над чем работаю сейчас, уже готовится — загляните позже.",
       journal_empty_next: "Заметки о том, что дальше с курсом, уже в пути — загляните позже.",
+      journal_next_heading: "Что делаю дальше",
+      journal_next_intro: "Сейчас готовлю новые воркшопы — вот темы, над которыми работаю прямо сейчас.",
+      journal_next1_title: "Когнитивные искажения в работе менеджера и что с ними делать",
+      journal_next1_body: "Как эвристики и когнитивные искажения незаметно влияют на решения аккаунт-менеджера — от эффекта якоря в переговорах о цене до предвзятости подтверждения при оценке здоровья клиента — и что с этим делать на практике.",
+      journal_next2_title: "Как реагировать на пассивно-агрессивное общение в работе",
+      journal_next2_body: "Практические техники распознавания пассивной агрессии в переписке и на созвонах — и рабочие способы называть её прямо, не эскалируя конфликт и не проглатывая обиду.",
+      journal_next3_title: "Особенности общения с разными национальностями клиентов",
+      journal_next3_body: "Как культурный контекст меняет ожидания от темпа переписки, прямоты формулировок и невербальных сигналов — и как подстраивать стиль коммуникации, оставаясь собой.",
+      journal_next4_title: "Ведение переговоров: аргументация, контр-аргументация, работа с возражениями",
+      journal_next4_body: "Структура сильной аргументации, разбор типовых возражений клиентов и приёмы контраргументации, которые не превращают переговоры в спор на повышенных тонах.",
       journal_empty_essays: "Развёрнутые авторские колонки в разработке — загляните позже.",
       journal_post1_title: "Мой первый ICE в Лондоне, 2024",
       journal_post1_dek: "Февраль 2024 · ICE London, ExCeL",
@@ -3351,7 +3423,7 @@
       journal_post1_p2: "На тот момент я проработала в EvenBet всего восемь месяцев, и казалось, что знаю и понимаю ещё далеко не всё. Но на деле всё прошло куда успешнее, чем я ожидала: коллеги оперативно подключались онлайн и помогали закрывать вопросы, на которые я сама пока не знала ответа, — либо я возвращалась к лиду чуть позже в переписке с точным ответом.",
       journal_post1_p3: "Темп выставки оказался экстремальным — иногда даже не было времени перекусить, — но впечатления того стоили. Это была отличная прокачка навыков Customer Success: приходилось на месте считывать боль или запрос лида и сразу предлагать возможное решение, опираясь на знание продукта и индустрии.",
       journal_post2_title: "SBC Lisbon, 2024",
-      journal_post2_dek: "2024 · Лиссабон",
+      journal_post2_dek: "Сентябрь 2024 · Лиссабон",
       journal_post2_p1: "Второй моей выставкой стала SBC Lisbon 2024. После ICE я чувствовала себя гораздо увереннее как презентер: за время между Лондоном и Лиссабоном провела больше 100 предпродажных демо для лидов онлайн. Знания продукта заметно углубились, а сама я к тому моменту уже стала тимлидом — в подчинении оказалось 4–5 человек с проектами на разных стадиях.",
       journal_post2_p2: "Сама выставка была менее интенсивной, чем ICE: демо было заметно меньше, и рядом со мной уже был компаньон — ещё один тимлид из команды AM Casino. Несмотря на все накопленные знания о продукте, всё равно находились вопросы, которые требовали уточнения у технического отдела или коллег. Но уверенности и убедительности презентера мне хватило, чтобы несколько лидов вернулись в другой день выставки — уже для подписания контрактов.",
 
@@ -3369,6 +3441,7 @@
       curriculum_teaser_h2: "Шесть модулей. Каждый заканчивается скриптом для следующего звонка.",
       curriculum_teaser_sub: "Модули открываются по порядку на отдельной вкладке: следующий становится доступен только после того, как вы отметите текущий пройденным — так материал выстраивается последовательно, а не превращается в кучу открытых вкладок.",
       curriculum_teaser_cta: "Открыть модули курса →",
+      upcoming_workshops_label: "Новые воркшопы в разработке",
       ctl_preview_badge: "доступно превью →",
 
       sitemap_kicker: "Что есть на сайте",
@@ -3502,21 +3575,22 @@
       about_p2: "Почти за десять лет в IT я успела побывать PM в аутсорс-компаниях — fintech, SaaS, e-commerce — и Account Manager'ом в Customer Success в индустрии iGaming. Сегодня я руковожу командой AM в EvenBet Gaming, международной компании с по-настоящему сильным продуктом.",
       about_p3: "За это время прошла путь от «просто решаю проблемы и пересылаю информацию команде» до «продаю сервис как продукт и измеряю работу команды через бизнес-метрики клиента».",
       about_role: "Тимлид команды Account Management, EvenBet Gaming",
+      about_journal_link: "Почитать мой блокнот с конференций",
       testimonials_kicker: "От тех, кто уже прошёл",
       testimonials_h2: "Реальные реакции, а не постановочные цитаты",
       testimonials_sub: "Скриншоты от настоящих студентов курса — раздел будет пополняться.",
       testimonial1_caption: "О домашнем задании в форме квиза к Модулю 3",
 
-      donate_kicker: "Понравился курс?",
+      donate_kicker: "За бесплатный контент",
       donate_h2: "Угостите меня кофе",
-      donate_sub: "Этот курс — некоммерческий проект. Если он оказался полезен — небольшой донат в крипте всегда приятен (и никогда не обязателен).",
+      donate_sub: "Дневник, бесплатные статьи в Базе знаний и Модуль 1 открыты для всех — без подписки. Если они оказались полезны, а до подписки пока не дошли руки — небольшой донат в крипте всегда приятен, но никогда не обязателен.",
       faq_kicker: "Перед тем как решиться",
       faq_h2: "Несколько честных ответов",
       faq_sub: "Вопросы, которые обычно возникают прямо перед оплатой.",
       faq_q1: "Если я не дойду до конца курса, деньги вернут?",
       faq_a1: "Нет — деньги за уже использованный период не возвращаются. Если сомневаетесь, дойдёте ли до конца, начните с ежемесячной подписки — так вы сначала оцените свои силы, не беря сразу годовую. Отменить её можно в любой момент. Тут работает тот же принцип, что и в ресторане: никто не требует деньги назад за недоеденную порцию. Важно трезво оценивать свои возможности заранее, а не перекладывать эту ответственность на кого-то другого.",
       faq_q2: "Сертификат по итогам курса — это диплом гособразца?",
-      faq_a2: "Нет. По окончании курса вы получаете именной сертификат о прохождении — это подтверждение того, что вы прошли программу, а не документ гособразца.",
+      faq_a2: "Нет. По окончании курса вы получаете именной сертификат о прохождении — это подтверждение того, что вы прошли программу.",
       faq_q3: "Сколько времени в неделю нужно на курс?",
       faq_a3: "Решаете сами: кто-то проходит курс за один день, кому-то удобнее растянуть его на неделю. Сама программа рассчитана примерно на 8 часов вместе с практическими заданиями — от этой цифры и стоит отталкиваться, планируя своё время.",
       faq_q4: "Доступ к курсу — навсегда или пока активна подписка?",
@@ -7069,6 +7143,14 @@ function duelRefreshLang(){
     document.querySelectorAll('.module.open .module-body').forEach(body=>{
       body.style.maxHeight = body.scrollHeight + 'px';
     });
+  }
+
+  function openJournalConferences(){
+    showPage('journal');
+    setTimeout(()=>{
+      const card = document.getElementById('journal-card-conferences');
+      if(card) journalShowSection('conferences', card);
+    }, 60);
   }
 
   function openModuleFromTeaser(n){
