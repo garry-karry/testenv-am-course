@@ -6137,7 +6137,7 @@ function duelRefreshLang(){
     const dict = PRACTICE_DATA[currentLang];
     document.querySelectorAll('.practice-slot').forEach(slot=>{
       const mod = parseInt(slot.dataset.mod, 10);
-      if(mod === 1){
+      if(mod === 1 && !TESTING_MODE_SKIP_PAYMENT){
         const t = I18N[currentLang];
         slot.innerHTML = `
           <div class="slot-locked-card">
@@ -6245,7 +6245,7 @@ function duelRefreshLang(){
     const dict = DECK_DATA[currentLang];
     document.querySelectorAll('.deck-slot').forEach(slot=>{
       const mod = parseInt(slot.dataset.mod, 10);
-      if(mod === 1){
+      if(mod === 1 && !TESTING_MODE_SKIP_PAYMENT){
         const t = I18N[currentLang];
         slot.innerHTML = `
           <div class="slot-locked-card">
@@ -7004,7 +7004,7 @@ function duelRefreshLang(){
     });
     // TEMP: Duel Club unlocked for preview/review — flip to false to
     // restore normal annual-only gating before going live.
-    const DUEL_TEMP_UNLOCK = false;
+    const DUEL_TEMP_UNLOCK = TESTING_MODE_SKIP_PAYMENT;
     const isAnnual = DUEL_TEMP_UNLOCK || (subscribed && selectedPlan === 'annual');
 
     document.querySelectorAll('.agated').forEach(g=>{
