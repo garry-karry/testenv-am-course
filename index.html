@@ -1176,6 +1176,15 @@
   .pricing{border-top:1px solid var(--line);}
   .pricing-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:8px;}
   @media (max-width:720px){.pricing-grid{grid-template-columns:1fr;}}
+  .cis-payment-note{
+    margin-top:20px; padding:18px 22px; border-radius:12px; background:var(--surface);
+    border:1px solid var(--line); display:flex; align-items:center; gap:16px;
+  }
+  .cis-payment-icon{font-size:22px; flex:none;}
+  .cis-payment-text{flex:1;}
+  .cis-payment-text p{margin:0; font-size:13.5px; color:var(--text-dim); line-height:1.55;}
+  .cis-payment-cta{flex:none; white-space:nowrap;}
+  @media (max-width:640px){.cis-payment-note{flex-direction:column; align-items:stretch; text-align:center;}}
   .plan-card{
     border:1px solid var(--line); border-radius:14px; background:var(--surface); padding:26px;
     display:flex; flex-direction:column;
@@ -1716,6 +1725,13 @@
           </ul>
           <button class="btn-plan" onclick="openModal('annual')" data-i18n="plan_annual_cta"></button>
         </div>
+      </div>
+      <div class="cis-payment-note">
+        <span class="cis-payment-icon">💳</span>
+        <div class="cis-payment-text">
+          <p data-i18n="cis_payment_body"></p>
+        </div>
+        <button class="btn-unlock cis-payment-cta" onclick="aiAvatarClick()" data-i18n="cis_payment_cta"></button>
       </div>
       <div class="roadmap-note">
         <span class="roadmap-icon">🚀</span>
@@ -3493,6 +3509,8 @@
       plan_annual_name: "Annual",
       plan_annual_note: "billed once a year · save $87 vs. monthly",
       plan_annual_cta: "Subscribe annually",
+      cis_payment_body: "Paying by card or via ЕРИП from Russia or Belarus? Message me directly and we'll sort out payment and access by hand.",
+      cis_payment_cta: "Message me →",
       plan_badge: "25% cheaper",
       plan_badge_promo: "Promo price",
       plan_feature1: "All 6 modules, unlocked immediately",
@@ -4007,6 +4025,8 @@
       plan_annual_name: "На год",
       plan_annual_note: "разовая оплата за год · экономия $87 по сравнению с помесячной",
       plan_annual_cta: "Оформить на год",
+      cis_payment_body: "Хотите оплатить картой РФ/РБ или через ЕРИП? Напишите мне напрямую — оформим оплату и доступ вручную.",
+      cis_payment_cta: "Написать мне →",
       plan_badge: "Выгоднее на 25%",
       plan_badge_promo: "Акционная цена",
       plan_feature1: "Все 6 модулей открываются сразу",
