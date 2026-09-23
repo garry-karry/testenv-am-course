@@ -189,6 +189,7 @@
     text-transform:uppercase; color:var(--teal); background:rgba(45,212,191,.12);
     border:1px solid rgba(45,212,191,.4); padding:3px 9px; border-radius:20px; flex:none;
   }
+  .ctl-new-badge{color:#ffcf6b; background:rgba(255,207,107,.12); border-color:rgba(255,207,107,.45); text-transform:none;}
   .ctl-num{
     font-family:var(--mono); font-weight:700; font-size:13px; color:var(--text-dim2);
     width:22px; flex:none;
@@ -589,8 +590,9 @@
   .module[data-mod="4"] .module-num{background:rgba(156,127,230,.16); border-color:rgba(156,127,230,.4);}
   .module[data-mod="5"] .module-num{background:rgba(255,207,107,.16); border-color:rgba(255,207,107,.4);}
   .module[data-mod="6"] .module-num{background:rgba(255,81,99,.16); border-color:rgba(255,81,99,.4);}
-  .module[data-mod="7"] .module-num{background:rgba(169,183,198,.14); border-color:rgba(169,183,198,.35);}
-  /* -- module 7: "in development" teaser, not interactive -- */
+  .module[data-mod="7"] .module-num{background:rgba(78,168,222,.16); border-color:rgba(78,168,222,.4);}
+  .module[data-mod="8"] .module-num{background:rgba(169,183,198,.14); border-color:rgba(169,183,198,.35);}
+  /* -- module 8: "in development" teaser, not interactive -- */
   .module.module-soon{opacity:.72;}
   .module.module-soon .module-head{cursor:default;}
   .module.module-soon:hover .module-num{transform:none;}
@@ -779,6 +781,50 @@
   .slot-locked-card h5{margin:0 0 6px; font-size:15.5px; color:var(--text);}
   .slot-locked-card p{margin:0 0 14px; font-size:13.5px; color:var(--text-dim); max-width:38ch; margin-left:auto; margin-right:auto;}
 
+
+  /* ---------- MODULE 7: homework card, health-score checklist, risk radar quiz ---------- */
+  .m7-card{background:var(--surface-2); border:1px solid var(--line); border-radius:12px; padding:20px; margin:16px 0;}
+  .m7-card-title{font-size:15.5px; font-weight:700; color:var(--text); margin-bottom:3px;}
+  .m7-card-sub{font-size:12.5px; color:var(--text-dim2); margin-bottom:14px;}
+  .m7-hw-list{margin:0; padding-left:0; list-style:none; counter-reset:hw;}
+  .m7-hw-list li{counter-increment:hw; position:relative; padding:7px 0 7px 36px; font-size:14px; color:var(--text-dim); line-height:1.5; border-top:1px solid var(--line);}
+  .m7-hw-list li:first-child{border-top:none;}
+  .m7-hw-list li::before{content:counter(hw); position:absolute; left:0; top:7px; width:24px; height:24px; border-radius:50%; background:rgba(78,168,222,.16); border:1px solid rgba(78,168,222,.45); color:#4ea8de; font-family:var(--mono); font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center;}
+  .hc-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+  @media (max-width:720px){.hc-grid{grid-template-columns:1fr;}}
+  .hc-cat{border:1px solid var(--line); border-radius:10px; padding:12px 12px 6px; background:var(--surface);}
+  .hc-cat-name{display:flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:var(--text); margin-bottom:6px;}
+  .hc-dot{width:9px; height:9px; border-radius:50%; flex:none;}
+  .hc-cat-count{margin-left:auto; font-family:var(--mono); font-size:11px; color:var(--text-dim2);}
+  .hc-item{display:flex; align-items:flex-start; gap:9px; padding:6px 0; font-size:13px; color:var(--text-dim); line-height:1.45; cursor:pointer;}
+  .hc-item input{margin-top:2px; accent-color:#4ea8de; flex:none; cursor:pointer;}
+  .hc-item.checked{color:var(--text);}
+  .hc-footer{display:flex; flex-wrap:wrap; align-items:center; gap:10px 16px; margin-top:14px;}
+  .hc-status{flex:1 1 260px; padding:11px 14px; border-radius:9px; font-size:13.5px; font-weight:600; line-height:1.5;}
+  .hc-status.green{background:rgba(45,212,191,.12); color:var(--teal); border-left:3px solid var(--teal);}
+  .hc-status.yellow{background:rgba(227,179,65,.14); color:var(--gold); border-left:3px solid var(--gold);}
+  .hc-status.red{background:rgba(255,81,99,.12); color:var(--red); border-left:3px solid var(--red);}
+  .hc-crit{display:flex; align-items:center; gap:8px; font-size:13px; color:var(--text-dim); cursor:pointer;}
+  .hc-crit input{accent-color:var(--red); cursor:pointer;}
+  .hc-reset{background:none; border:1px solid var(--line); color:var(--text-dim2); border-radius:8px; padding:7px 12px; font-size:12.5px; cursor:pointer;}
+  .hc-reset:hover{border-color:var(--teal); color:var(--text);}
+  .m7-q-group{border-top:1px solid var(--line); padding:12px 0 4px;}
+  .m7-q-group:first-of-type{border-top:none;}
+  .m7-q-head{display:flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:var(--text); margin-bottom:6px;}
+  .m7-q-list{margin:0; padding-left:20px;}
+  .m7-q-list li{font-size:13.5px; color:var(--text-dim); line-height:1.5; padding:3px 0;}
+  .m7-q-actions{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px;}
+  .m7-q-actions a, .m7-q-actions button{font-size:13px; padding:9px 16px;}
+  .m7-q-link{background:none; border:1px solid var(--line); color:var(--text-dim); border-radius:8px; text-decoration:none; display:inline-flex; align-items:center;}
+  .m7-q-link:hover{border-color:var(--teal); color:var(--text);}
+  .rq-hint-btn{background:none; border:none; color:var(--teal); font-size:13px; font-weight:600; cursor:pointer; padding:2px 0; margin:-4px 0 12px;}
+  .rq-hint-btn:hover{text-decoration:underline;}
+  .rq-hint{background:rgba(45,212,191,.08); border-left:3px solid var(--teal); color:var(--text-dim); font-size:13px; line-height:1.55; padding:9px 12px; border-radius:6px; margin:-4px 0 14px;}
+  .rq-cat-tag{display:inline-block; margin-top:10px; font-family:var(--mono); font-size:10.5px; font-weight:700; padding:3px 10px; border-radius:20px; text-transform:uppercase; color:#0b0f14;}
+  .rq-breakdown{text-align:left; margin:0 auto 18px; max-width:420px;}
+  .rq-bd-row{display:grid; grid-template-columns:12px 1fr auto; align-items:center; gap:10px; font-size:13px; color:var(--text-dim); margin-bottom:4px;}
+  .rq-bd-bar{height:5px; background:var(--line); border-radius:3px; overflow:hidden; margin:0 0 10px 22px;}
+  .rq-bd-bar > div{height:100%; border-radius:3px;}
   /* ---------- MODULE 3 WORKSHOP QUIZ ---------- */
   .wq-block{margin:16px 0;}
   .wq-header{margin-bottom:14px;}
@@ -1482,9 +1528,9 @@
     <div class="hero-suit">♠</div>
     <div class="cursor-glow" id="cursor-glow"></div>
     <div class="wrap">
-      <span class="eyebrow"><span class="dot"></span><span data-i18n="hero_eyebrow">6-module course · for account managers &amp; CS teams</span></span>
+      <span class="eyebrow"><span class="dot"></span><span data-i18n="hero_eyebrow">7-module course · for account managers &amp; CS teams</span></span>
       <h1 data-i18n="hero_h1">Why your best managers keep <span class="hl">losing clients</span></h1>
-      <p class="sub" data-i18n="hero_sub">Built inside a live <b>Poker &amp; Casino Product</b> Customer Success team, drowning in "we're working on it" tickets. Six modules, real scripts, zero fluff — for any Account Manager who has to talk to humans about deadlines.</p>
+      <p class="sub" data-i18n="hero_sub">Built inside a live <b>Poker &amp; Casino Product</b> Customer Success team, drowning in "we're working on it" tickets. Seven modules, real scripts, zero fluff — for any Account Manager who has to talk to humans about deadlines.</p>
       <div class="hero-stats">
         <div class="stat-chip" data-i18n="hero_stat1"></div>
         <div class="stat-chip" data-i18n="hero_stat2"></div>
@@ -1560,7 +1606,8 @@
         <li><span class="ctl-num">4</span><span data-i18n="module4_title"></span></li>
         <li><span class="ctl-num">5</span><span data-i18n="module5_title"></span></li>
         <li><span class="ctl-num">6</span><span data-i18n="module6_title"></span></li>
-        <li class="soon"><span class="ctl-num">7</span><span data-i18n="module7_title"></span><span class="soon-badge-mini" data-i18n="soon_badge"></span></li>
+        <li><span class="ctl-num">7</span><span data-i18n="module7_title"></span><span class="ctl-preview-badge ctl-new-badge" data-i18n="new_badge"></span></li>
+        <li class="soon"><span class="ctl-num">8</span><span data-i18n="module8_title"></span><span class="soon-badge-mini" data-i18n="soon_badge"></span></li>
       </ul>
       <button class="btn-primary" onclick="showPage('modules')" data-i18n="curriculum_teaser_cta"></button>
 
@@ -1809,25 +1856,27 @@
   <line x1="220" y1="280" x2="580" y2="280" stroke="#2dd4bf" stroke-width="2"/>
 
   <!-- body -->
-  <text x="400" y="316" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="14" fill="#a9c9c0">has successfully completed all six modules of</text>
+  <text x="400" y="316" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="14" fill="#a9c9c0">has successfully completed all seven modules of</text>
   <text x="400" y="342" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="17" font-weight="700" fill="#f1fbf8">The Account Manager &amp; Customer Success Negotiation Academy</text>
 
   <!-- module suit row -->
   <g font-family="ui-monospace, monospace" font-size="18" text-anchor="middle">
-    <circle cx="250" cy="384" r="19" fill="rgba(45,212,191,.12)" stroke="#2dd4bf" stroke-width="1.5"/>
-    <text x="250" y="391" fill="#2dd4bf">♠</text>
-    <circle cx="310" cy="384" r="19" fill="rgba(227,179,65,.12)" stroke="#e3b341" stroke-width="1.5"/>
-    <text x="310" y="391" fill="#e3b341">♥</text>
-    <circle cx="370" cy="384" r="19" fill="rgba(255,81,99,.12)" stroke="#ff5163" stroke-width="1.5"/>
-    <text x="370" y="391" fill="#ff5163">♦</text>
-    <circle cx="430" cy="384" r="19" fill="rgba(156,127,230,.14)" stroke="#9c7fe6" stroke-width="1.5"/>
-    <text x="430" y="391" fill="#9c7fe6">♣</text>
-    <circle cx="490" cy="384" r="19" fill="rgba(255,107,79,.12)" stroke="#ff6b4f" stroke-width="1.5"/>
-    <text x="490" y="391" fill="#ff6b4f">♠</text>
-    <circle cx="550" cy="384" r="19" fill="rgba(45,212,191,.12)" stroke="#2dd4bf" stroke-width="1.5"/>
-    <text x="550" y="391" fill="#2dd4bf">♥</text>
+    <circle cx="220" cy="384" r="19" fill="rgba(45,212,191,.12)" stroke="#2dd4bf" stroke-width="1.5"/>
+    <text x="220" y="391" fill="#2dd4bf">♠</text>
+    <circle cx="280" cy="384" r="19" fill="rgba(227,179,65,.12)" stroke="#e3b341" stroke-width="1.5"/>
+    <text x="280" y="391" fill="#e3b341">♥</text>
+    <circle cx="340" cy="384" r="19" fill="rgba(255,81,99,.12)" stroke="#ff5163" stroke-width="1.5"/>
+    <text x="340" y="391" fill="#ff5163">♦</text>
+    <circle cx="400" cy="384" r="19" fill="rgba(156,127,230,.14)" stroke="#9c7fe6" stroke-width="1.5"/>
+    <text x="400" y="391" fill="#9c7fe6">♣</text>
+    <circle cx="460" cy="384" r="19" fill="rgba(255,107,79,.12)" stroke="#ff6b4f" stroke-width="1.5"/>
+    <text x="460" y="391" fill="#ff6b4f">♠</text>
+    <circle cx="520" cy="384" r="19" fill="rgba(45,212,191,.12)" stroke="#2dd4bf" stroke-width="1.5"/>
+    <text x="520" y="391" fill="#2dd4bf">♥</text>
+    <circle cx="580" cy="384" r="19" fill="rgba(78,168,222,.12)" stroke="#4ea8de" stroke-width="1.5"/>
+    <text x="580" y="391" fill="#4ea8de">♦</text>
   </g>
-  <text x="400" y="424" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10.5" letter-spacing="1.5" fill="#a9c9c0">SIX MODULES · ALL IN</text>
+  <text x="400" y="424" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10.5" letter-spacing="1.5" fill="#a9c9c0">SEVEN MODULES · ALL IN</text>
 
   <!-- footer: date + signature -->
   <line x1="90" y1="486" x2="270" y2="486" stroke="#1f5c50" stroke-width="1"/>
@@ -2088,7 +2137,7 @@
         <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
         <div class="suit-track" id="suit-track">
           <span data-suit="1">♠</span><span data-suit="2">♦</span><span data-suit="3">♣</span>
-          <span data-suit="4">♥</span><span data-suit="5">♠</span><span data-suit="6">♦</span>
+          <span data-suit="4">♥</span><span data-suit="5">♠</span><span data-suit="6">♦</span><span data-suit="7">♣</span>
         </div>
       </div>
       <div class="header-controls">
@@ -2417,17 +2466,61 @@
         </div>
       </div>
 
-      <!-- Module 7 — in development, teaser only, no interaction -->
-      <div class="module module-soon" data-mod="7">
+      <!-- MODULE 7 - project risks (adapted from workshop topic 08) -->
+      <div class="module" data-mod="7">
+        <div class="module-head" onclick="toggleModule(this)">
+          <div class="module-num">📡</div>
+          <div class="module-titlewrap">
+            <h3 data-i18n="module7_title"></h3>
+            <div class="module-meta"><span data-i18n="module7_meta"></span><span class="lock-tag" data-gate-tag="7" data-i18n="locked_tag"></span></div>
+          </div>
+          <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="module-body">
+          <div class="module-body-inner">
+            <p class="hook" data-i18n="module7_hook"></p>
+            <div class="gated" data-gate="7">
+              <ul class="takeaways">
+                <li data-i18n="module7_t1"></li>
+                <li data-i18n="module7_t2"></li>
+                <li data-i18n="module7_t3"></li>
+                <li data-i18n="module7_t4"></li>
+                <li data-i18n="module7_t5"></li>
+              </ul>
+              <div class="quote-card"><b data-i18n="module7_quote_label"></b><span data-i18n="module7_quote_text"></span></div>
+              <details class="author-note">
+                <summary data-i18n="author_note_label"></summary>
+                <div class="author-note-body">
+                  <p data-i18n="module7_author_p1"></p>
+                  <p data-i18n="module7_author_p2"></p>
+                  <p data-i18n="module7_author_p3"></p>
+                </div>
+              </details>
+              <div class="deck-slot" data-mod="7" style="--accent:#4ea8de"></div>
+              <div class="practice-slot" data-mod="7"></div>
+              <div class="mark-done" onclick="toggleDone(this,7)"><span class="box"></span><span class="label" data-i18n="mark_done_label"></span></div>
+            </div>
+            <div class="paywall-card" data-paywall="7">
+              <div class="lock-icon">🔒</div>
+              <h5 data-i18n="paywall_title"></h5>
+              <p data-i18n="paywall_body_locked"></p>
+              <button class="btn-unlock" onclick="scrollToPricing()" data-i18n="paywall_cta"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 8 - in development, teaser only, no interaction -->
+      <div class="module module-soon" data-mod="8">
         <div class="module-head">
           <div class="module-num">🔮</div>
           <div class="module-titlewrap">
-            <h3 data-i18n="module7_title"></h3>
-            <div class="module-meta"><span data-i18n="module7_meta"></span><span class="soon-badge-mini" data-i18n="soon_badge"></span></div>
+            <h3 data-i18n="module8_title"></h3>
+            <div class="module-meta"><span data-i18n="module8_meta"></span><span class="soon-badge-mini" data-i18n="soon_badge"></span></div>
           </div>
         </div>
         <div class="module-body-static">
-          <p data-i18n="module7_hook"></p>
+          <p data-i18n="module8_hook"></p>
         </div>
       </div>
 
@@ -2662,6 +2755,22 @@
                     <p data-i18n="kb_playbook3_p2"></p>
                     <p data-i18n="kb_playbook3_p3"></p>
                     <div class="kb-article-sources"><span data-i18n="kb_sources_label"></span> <span data-i18n="kb_playbook3_sources"></span></div>
+                  </div>
+                </details>
+                <details class="kb-article" id="kb-playbook-4">
+                  <summary>
+                    <span class="kb-article-icon">📡</span>
+                    <span class="kb-article-titlewrap">
+                      <span class="kb-article-title" data-i18n="kb_playbook4_title"></span>
+                      <span class="kb-article-dek" data-i18n="kb_playbook4_dek"></span>
+                    </span>
+                    <span class="kb-article-chevron">▾</span>
+                  </summary>
+                  <div class="kb-article-body">
+                    <p data-i18n="kb_playbook4_p1"></p>
+                    <p data-i18n="kb_playbook4_p2"></p>
+                    <p data-i18n="kb_playbook4_p3"></p>
+                    <a class="btn-primary" href="downloads/risk-assessment-before-kickoff-ru.docx" download style="display:inline-block; margin-top:6px; padding:10px 18px; font-size:13px;" data-i18n="kb_playbook4_cta"></a>
                   </div>
                 </details>
               </div>
@@ -3098,11 +3207,11 @@
 <script>
   const I18N = {
     en: {
-      hero_eyebrow: "6-module Academy · for account managers &amp; CS teams",
+      hero_eyebrow: "7-module Academy · for account managers &amp; CS teams",
       hero_h1: 'Why your best managers keep <span class="hl">losing clients</span>',
-      hero_sub: 'Built inside a live <b>Poker &amp; Casino Product</b> Customer Success team, drowning in "we\'re working on it" tickets. Six modules, real scripts, zero fluff — for any Account Manager who has to talk to humans about deadlines.',
-      hero_stat1: "<b>6</b> modules with practice assignments",
-      hero_stat2: "<b>~5h</b> total",
+      hero_sub: 'Built inside a live <b>Poker &amp; Casino Product</b> Customer Success team, drowning in "we\'re working on it" tickets. Seven modules, real scripts, zero fluff — for any Account Manager who has to talk to humans about deadlines.',
+      hero_stat1: "<b>7</b> modules with practice assignments",
+      hero_stat2: "<b>~6h</b> total",
       hero_stat3: "role-play + real scripts",
       hero_stat4: "0 fluffy theory",
       hero_cta: "Start Module 1 →",
@@ -3197,6 +3306,16 @@
       kb_book5_author: "Nick Mehta, Dan Steinman, Lincoln Murphy",
       kb_book5_body: "The foundational one. It reframes what Customer Success actually is — not just answering client questions, but building a genuine partnership, helping clients reach their goals, and growing the business as a result. After reading it, familiar day-to-day tasks start fitting into a single system, and it becomes clearer why some clients stay for years while others leave.",
       kb_sources_label: "Sources:",
+      module7_q_title: "Questions that clarify a risk",
+      module7_q_sub: "What we ask the partner, depending on the type of risk. The full guide - where to find information, ready AI prompts and risk tables for the kick-off - is in the playbook.",
+      module7_q_open: "Open the playbook in the Knowledge Base →",
+      module7_q_download: "Download .docx (RU)",
+      kb_playbook4_title: "Risk assessment before kick-off: 5 steps",
+      kb_playbook4_dek: "Questions, sources, AI prompts and a risk table - downloadable guide",
+      kb_playbook4_p1: "Five checks an AM runs before the contract is signed or right after launch: market profile, financial stability, product readiness, marketing strategy and the partner's team.",
+      kb_playbook4_p2: "For each step the guide gives the questions to ask, where to find the information, a ready-to-copy AI prompt and how to analyse the result. It ends with two risk-table templates: an internal one for your team and a client-facing one for the kick-off presentation.",
+      kb_playbook4_p3: "It's the companion to Module 7 \"Project closure risks\". The document is in Russian.",
+      kb_playbook4_cta: "Download the guide (.docx) →",
 
       kb_article1_title: "Cadence beats chaos: a practical rhythm for client communication",
       kb_article1_dek: "Why a predictable check-in schedule protects trust better than being reachable 24/7",
@@ -3230,7 +3349,7 @@
       kb_article4_p4: "The Customer Success Professional's Handbook frames this as expectation management rather than damage control: the earlier a mismatch between what was promised and what's realistic gets named, the smaller the trust cost. Waiting until the gap is undeniable is usually what turns a manageable conversation into a genuinely difficult one.",
       kb_article4_sources: "Science of People, the HANDLE framework via Medium, and the SPIDER protocol via Call Centre Helper; The Customer Success Professional's Handbook (Vaidyanathan &amp; Rabago).",
       kb_paywall_title: "Subscriber-only section",
-      kb_paywall_body: "Process playbooks and ready-to-send scripts are included with any subscription, monthly or annual — along with all 6 modules.",
+      kb_paywall_body: "Process playbooks and ready-to-send scripts are included with any subscription, monthly or annual — along with all 7 modules.",
       kb_paywall_cta: "See plans",
 
       journal_kicker: "Free, always",
@@ -3309,9 +3428,9 @@
       b2b_cta: "Message me about team access",
 
       curriculum_kicker: "The curriculum",
-      curriculum_h2: "Six modules. Every one ends with a script you can use on your next call.",
+      curriculum_h2: "Seven modules. Every one ends with a script you can use on your next call.",
       curriculum_sub: "Click a module to expand it. Check it off once you've actually tried the technique — the suits above fill in as you go.",
-      curriculum_teaser_h2: "Six modules. Every one ends with a script you can use on your next call.",
+      curriculum_teaser_h2: "Seven modules. Every one ends with a script you can use on your next call.",
       curriculum_teaser_sub: "Each module opens in its own tab, in order — you unlock the next one only after marking the current one complete, so the material builds instead of turning into a pile of open tabs.",
       curriculum_teaser_cta: "Open the Academy Modules →",
       upcoming_workshops_label: "New workshops in the works",
@@ -3321,7 +3440,7 @@
       sitemap_h2: "One Academy, four tools",
       sitemap_sub: "A quick map of everything here — jump straight to the part you need.",
       sitemap_modules_title: "Academy Modules",
-      sitemap_modules_desc: "The six-module Academy itself, plus one module in the works. Goes in order — each unlocks once the previous one is marked complete.",
+      sitemap_modules_desc: "The seven-module Academy itself, plus one module in the works. Goes in order — each unlocks once the previous one is marked complete.",
       sitemap_duel_title: "Dueling Club",
       sitemap_duel_desc: "A scenario generator for live practice: pick a client type, a problem, and play it out against the clock (annual plan).",
       sitemap_kb_title: "Knowledge Base",
@@ -3414,9 +3533,38 @@
       module6_author_p3: "The communication format itself is a de-escalation tool: a call when emotions are at their peak, writing things down with a manipulator or a chaotic client, a team lead joining the call when your own attempts haven't lowered the temperature, a follow-up summary email after every hard conversation.",
       module6_author_p4: "And if you can't bring the relationship back on track, there's an escalation ladder from L1 to L4. The rule underneath all of it: not every difficult client is toxic. Toxicity is a pattern, not a single incident — act on the pattern, not on the emotional spike, yours or theirs.",
 
-      module7_title: "Negotiating Renewals &amp; Upsells",
-      module7_meta: "Coming soon · new module",
-      module7_hook: "The next module is in the works: how to bring up renewal and expansion conversations without sounding like a salesperson, and how to price a difficult year honestly. Subscribers get it the moment it ships — no extra charge.",
+      module7_title: "Project Risks: Seeing a Closure Coming",
+      module7_meta: "55 min · case + risk-radar quiz",
+      module7_hook: "Poker and casino projects rarely close out of nowhere. Behind almost every closure there are 2-3 signals an Account Manager could have caught months earlier - if they knew where to look.",
+      module7_t1: "<b>6 risk categories</b> cover almost every closure: regulatory, financial, traffic &amp; marketing, product &amp; tech, competition &amp; market, team &amp; management.",
+      module7_t2: "<b>Early signals beat loud events</b>: invoices slipping 5-10 days, the KPI shifting from \"growth\" to \"retaining the base\", the decision-maker quietly changing.",
+      module7_t3: "<b>Health-score traffic light</b>: green - 0 signals, yellow - 1-2 signals, red - 3+ signals or one critical.",
+      module7_t4: "<b>Geo changes the risk profile</b>: UK and Malta - regulator and compliance, Brazil and LatAm - unsettled rules, CIS and offshore Asia - payments and blocking.",
+      module7_t5: "<b>The cheapest moment to catch a risk is before kick-off</b>: 5 checks on market, finances, product, marketing and the partner's team.",
+      module7_quote_label: "Steal this line",
+      module7_quote_text: "\"I'm seeing a few signals and I'd like to compare notes - let's look at them together while it's still not a problem.\"",
+      module7_author_p1: "Reconstruct the timeline of almost any project closure and you'll find 2-3 signals months before the end: payments drifting, a new contact who doesn't know the history, QBRs cancelled \"for now\". Usually someone saw each of them - nobody put them together into one picture.",
+      module7_author_p2: "That's why the framework here is deliberately simple: 6 categories, 4 early signals in each, and a green / yellow / red health-score. It isn't there for a report - it's there so you raise your hand in time: escalate to your team lead, bring in compliance, or have an honest conversation with the partner.",
+      module7_author_p3: "One important caveat: yellow is not a verdict on the project, it's a reason to look closer. Most risks can be defused with one honest conversation - if you start it before the partner has decided to leave on their own.",
+      module7_hw_title: "Homework",
+      module7_hw_sub: "Apply the framework to a real project - after the module, not before.",
+      module7_hw_1: "Pick one real partner (project) from your portfolio to analyze.",
+      module7_hw_2: "Go through all 6 risk categories using the health-score checklist below.",
+      module7_hw_3: "Mark the signals you see in each category and add a short comment.",
+      module7_hw_4: "Set the partner's overall status: green / yellow / red.",
+      module7_hw_5: "Discuss the result and an action plan with your team lead.",
+      module7_hw_6: "Take the 15-case Risk Radar quiz - identify the risk type in each partner description.",
+      module7_hc_title: "Health-score checklist",
+      module7_hc_sub: "Tick the signals you actually see in your partner. The status updates automatically.",
+      module7_hc_status_green: "Green - no risk signals. Keep the standard rhythm and planned QBRs.",
+      module7_hc_status_yellow: "Yellow - 1-2 signals. Spot-check, flag to your team lead, monitor more closely.",
+      module7_hc_status_red: "Red - 3+ signals or one critical. Escalate now, build a retention plan, involve leadership.",
+      module7_hc_critical: "Mark one signal as critical",
+      module7_hc_reset: "Reset",
+      module8_title: "Negotiating Renewals &amp; Upsells",
+      module8_meta: "Coming soon · new module",
+      module8_hook: "The next module is in the works: how to bring up renewal and expansion conversations without sounding like a salesperson, and how to price a difficult year honestly. Subscribers get it the moment it ships - no extra charge.",
+      new_badge: "New!",
 
       mark_done_label: "Mark module complete",
       mark_done_done: "Module complete",
@@ -3431,7 +3579,7 @@
       audience_card3_desc: "No prior training needed — every module ends with a script for the exact conversation you're already having this week.",
 
       completion_h2: "Go all in",
-      completion_p: "Mark all 6 modules complete and the badge above goes gold — that unlocks your certificate of completion, generated with your name the moment you claim it.",
+      completion_p: "Mark all 7 modules complete and the badge above goes gold — that unlocks your certificate of completion, generated with your name the moment you claim it.",
       cert_example_label: "Example certificate — yours will have your own name on it",
       completion_full: "All in. Now go say one of these out loud before you close this tab.",
       completion_progress: " modules to go.",
@@ -3478,7 +3626,7 @@
       contact_channel_label: "Telegram channel",
 
       progress_prefix: "",
-      progress_suffix: " / 6 modules complete",
+      progress_suffix: " / 7 modules complete",
 
       topbar_subscribe: "🔓 Unlock all modules",
       topbar_subscribed: "✓ Subscribed",
@@ -3497,11 +3645,11 @@
       slot_locked_body: "Available right after you subscribe, along with all 5 remaining modules.",
       workshop_quiz_en_title: "Homework quiz — currently in Russian",
       workshop_quiz_en_body: "This 12-question exercise on trust recovery is available in Russian for now; an English version is on the way. Switch to RU above to try it.",
-      paywall_body_locked: "Subscribe to unlock this module — plus all 6 modules, real scripts, and both language decks.",
+      paywall_body_locked: "Subscribe to unlock this module — plus all 7 modules, real scripts, and both language decks.",
       paywall_cta: "Unlock with subscription",
 
       pricing_kicker: "Pricing",
-      pricing_h2: "One subscription, all six modules",
+      pricing_h2: "One subscription, all seven modules",
       pricing_sub: "Cancel anytime. Price in USD, with EUR / RUB / BYN equivalents shown alongside.",
       plan_monthly_name: "Monthly",
       plan_monthly_note: "billed every month",
@@ -3513,7 +3661,7 @@
       cis_payment_cta: "Message me →",
       plan_badge: "25% cheaper",
       plan_badge_promo: "Promo price",
-      plan_feature1: "All 6 modules, unlocked immediately",
+      plan_feature1: "All 7 modules, unlocked immediately",
       plan_feature2: "Both slide decks per module (RU + EN)",
       plan_feature3: "Real scripts &amp; role-play exercises",
       plan_feature4: "Lifetime access to future updates",
@@ -3595,15 +3743,15 @@
       restore_error_code_invalid: "That code is wrong or has expired. Try again or request a new one.",
       restore_error_expired: "This subscription has expired. Renew below to keep your access.",
       restore_success_title: "Access restored!",
-      restore_success_body: "All 6 modules are now unlocked on this device too.",
+      restore_success_body: "All 7 modules are now unlocked on this device too.",
       restore_success_cta: "Great",
       modal_success_title: "You're subscribed!",
-      modal_success_body: "All 6 modules are now unlocked. Scroll back up and dig in.",
+      modal_success_body: "All 7 modules are now unlocked. Scroll back up and dig in.",
       modal_success_cta: "Start learning →",
 
       cert_cta: "🎓 Get my certificate",
       cert_view_cta: "🎓 View certificate",
-      cert_modal_title: "You finished all 6 modules!",
+      cert_modal_title: "You finished all 7 modules!",
       cert_modal_sub: "Enter your email and we'll send your completion certificate.",
       cert_email_placeholder: "you@company.com",
       cert_submit_cta: "Send my certificate",
@@ -3614,11 +3762,11 @@
       cert_success_cta: "Nice"
     },
     ru: {
-      hero_eyebrow: "Обучение из 6 модулей · для аккаунт-менеджеров и CS",
+      hero_eyebrow: "Обучение из 7 модулей · для аккаунт-менеджеров и CS",
       hero_h1: 'Почему даже лучшие менеджеры <span class="hl">теряют клиентов</span>',
-      hero_sub: 'Академия родилась внутри реальной команды клиентского успеха продукта <b>Poker &amp; Casino</b> — команды, которая тонула в тикетах «мы работаем над этим» и постепенно училась говорить иначе. В ней шесть модулей и настоящие рабочие скрипты, без лишней воды — для каждого аккаунт-менеджера, которому приходится объяснять людям, что происходит со сроками.',
+      hero_sub: 'Академия родилась внутри реальной команды клиентского успеха продукта <b>Poker &amp; Casino</b> — команды, которая тонула в тикетах «мы работаем над этим» и постепенно училась говорить иначе. В ней семь модулей и настоящие рабочие скрипты, без лишней воды — для каждого аккаунт-менеджера, которому приходится объяснять людям, что происходит со сроками.',
       hero_stat1: "<b>6</b> модулей с заданиями для отработки",
-      hero_stat2: "<b>~5 ч</b> всего",
+      hero_stat2: "<b>~6 ч</b> всего",
       hero_stat3: "ролевые игры + реальные скрипты",
       hero_stat4: "0 воды и просто теории",
       hero_cta: "Начать модуль 1 →",
@@ -3713,6 +3861,16 @@
       kb_book5_author: "Nick Mehta, Dan Steinman, Lincoln Murphy",
       kb_book5_body: "Основа основ — книга, которая помогает по-новому взглянуть на роль Customer Success. Она не про то, как просто отвечать на вопросы клиентов, а про то, как выстраивать партнёрские отношения, помогать клиентам достигать своих целей и за счёт этого развивать бизнес. После прочтения привычные задачи начинают складываться в единую систему, а в ежедневной работе появляется больше понимания, почему одни клиенты остаются надолго, а другие уходят.",
       kb_sources_label: "Источники:",
+      module7_q_title: "Вопросы для прояснения риска",
+      module7_q_sub: "Что спрашиваем у партнёра в зависимости от типа риска. Полный гайд - где брать информацию, готовые AI-промпты и таблицы рисков для кик-оффа - в плейбуке.",
+      module7_q_open: "Открыть плейбук в Базе знаний →",
+      module7_q_download: "Скачать .docx",
+      kb_playbook4_title: "Оценка рисков до кик-оффа: 5 шагов",
+      kb_playbook4_dek: "Вопросы, источники, AI-промпты и таблица рисков - гайд для скачивания",
+      kb_playbook4_p1: "Пять проверок, которые AM проходит до подписания контракта или сразу после старта проекта: профиль маркета, финансовая устойчивость, продуктовая готовность, маркетинговая стратегия и команда партнёра.",
+      kb_playbook4_p2: "По каждому шагу - какие вопросы задавать, где брать информацию, готовый промпт для AI и как анализировать результат. В конце - два шаблона таблицы рисков: внутренняя для команды и клиентская для презентации на кик-оффе.",
+      kb_playbook4_p3: "Дополняет модуль 7 «Риски закрытия проектов».",
+      kb_playbook4_cta: "Скачать гайд (.docx) →",
 
       kb_article1_title: "Ритм важнее хаоса: как выстроить коммуникацию с клиентом",
       kb_article1_dek: "Почему предсказуемый график созвонов защищает доверие лучше, чем доступность 24/7",
@@ -3746,7 +3904,7 @@
       kb_article4_p4: "The Customer Success Professional's Handbook описывает это как управление ожиданиями, а не как борьбу с последствиями: чем раньше назван разрыв между тем, что обещали, и тем, что реалистично, тем меньше цена для доверия. Обычно именно ожидание, пока разрыв станет неоспоримым, превращает управляемый разговор в по-настоящему тяжёлый.",
       kb_article4_sources: "Science of People, фреймворк HANDLE (Medium) и протокол SPIDER (Call Centre Helper); The Customer Success Professional's Handbook (Вайдьянатан и Рабаго).",
       kb_paywall_title: "Раздел только по подписке",
-      kb_paywall_body: "Разборы процессов и готовые скрипты входят в любую подписку — месячную или годовую — вместе со всеми шестью модулями Академии.",
+      kb_paywall_body: "Разборы процессов и готовые скрипты входят в любую подписку — месячную или годовую — вместе со всеми семью модулями Академии.",
       kb_paywall_cta: "Смотреть тарифы",
 
       journal_kicker: "Бесплатно, всегда",
@@ -3825,9 +3983,9 @@
       b2b_cta: "Написать про доступ для команды",
 
       curriculum_kicker: "Программа Академии",
-      curriculum_h2: "Шесть модулей. Каждый заканчивается скриптом для следующего звонка.",
+      curriculum_h2: "Семь модулей. Каждый заканчивается скриптом для следующего звонка.",
       curriculum_sub: "Нажмите на модуль, чтобы раскрыть его. Отмечайте его, когда реально попробуете технику — масти выше будут заполняться.",
-      curriculum_teaser_h2: "Шесть модулей. Каждый заканчивается скриптом для следующего звонка.",
+      curriculum_teaser_h2: "Семь модулей. Каждый заканчивается скриптом для следующего звонка.",
       curriculum_teaser_sub: "Модули открываются по порядку на отдельной вкладке: следующий становится доступен только после того, как вы отметите текущий пройденным — так материал выстраивается последовательно, а не превращается в кучу открытых вкладок.",
       curriculum_teaser_cta: "Открыть модули Академии →",
       upcoming_workshops_label: "Новые воркшопы в разработке",
@@ -3837,7 +3995,7 @@
       sitemap_h2: "Одна Академия, четыре инструмента",
       sitemap_sub: "Небольшая карта всего, что есть на сайте, — чтобы вы могли сразу перейти туда, где сейчас нужнее всего.",
       sitemap_modules_title: "Модули Академии",
-      sitemap_modules_desc: "Сама Академия из шести модулей плюс один модуль в разработке. Открываются по порядку — следующий доступен только после того, как отмечен пройденным предыдущий.",
+      sitemap_modules_desc: "Сама Академия из семи модулей плюс один модуль в разработке. Открываются по порядку — следующий доступен только после того, как отмечен пройденным предыдущий.",
       sitemap_duel_title: "Дуэльный клуб",
       sitemap_duel_desc: "Генератор сценариев для живой практики: выбираете тип клиента, проблему — и отыгрываете разговор на время (годовая подписка).",
       sitemap_kb_title: "База знаний",
@@ -3930,9 +4088,38 @@
       module6_author_p3: 'Формат общения — тоже инструмент управления эскалацией: звонок, когда эмоции на пике, переписка — с манипулятором или хаотиком, тимлид на созвоне — когда агрессия не снижается после ваших попыток, письмо-резюме — всегда после сложного разговора.',
       module6_author_p4: 'И если вернуть отношения в рабочее русло не получается — есть лестница эскалации от L1 до L4. Ключевое правило: не каждый сложный заказчик токсичен, токсичность — это паттерн, а не один инцидент. Действуйте по паттерну, а не по вспышке эмоций — своих или клиента.',
 
-      module7_title: 'Переговоры о продлении и upsell',
-      module7_meta: 'Скоро · новый модуль',
-      module7_hook: 'Следующий модуль уже в разработке: как поднимать тему продления и расширения контракта, не превращаясь в продавца, и как честно обсуждать цену после сложного года. Подписчики получат его сразу после выхода — без доплаты.',
+      module7_title: "Риски закрытия проектов: как прогнозировать их заранее",
+      module7_meta: "55 мин · кейс + квиз-радар",
+      module7_hook: "Проекты в покере и казино редко закрываются внезапно. Почти за каждым закрытием стоят 2-3 сигнала, которые аккаунт-менеджер мог заметить за несколько месяцев - если знал, куда смотреть.",
+      module7_t1: "<b>6 категорий риска</b> покрывают почти любое закрытие: регуляторный, финансовый, трафик и маркетинг, продукт и технологии, конкуренция и рынок, команда и менеджмент.",
+      module7_t2: "<b>Ранние сигналы важнее громких событий</b>: инвойсы сдвигаются на 5-10 дней, KPI меняется с «роста» на «удержание базы», тихо меняется ЛПР.",
+      module7_t3: "<b>Светофор health-score</b>: green - 0 сигналов, yellow - 1-2 сигнала, red - 3+ сигнала или один критический.",
+      module7_t4: "<b>Гео меняет профиль риска</b>: UK и Мальта - регулятор и комплаенс, Бразилия и Латам - неустоявшиеся правила, СНГ и офшорная Азия - платежи и блокировки.",
+      module7_t5: "<b>Дешевле всего поймать риск до кик-оффа</b>: 5 шагов проверки маркета, финансов, продукта, маркетинга и команды партнёра.",
+      module7_quote_label: "Используйте эту фразу",
+      module7_quote_text: "«Я вижу несколько сигналов и хочу сверить картину - давайте посмотрим на них вместе, пока это ещё не проблема.»",
+      module7_author_p1: "Если восстановить хронологию почти любого закрытия проекта, в ней найдутся 2-3 сигнала за несколько месяцев до финала: платежи начинают «плыть», появляется новый контакт, который не знает историю, QBR отменяются «пока». Обычно каждый из них кто-то видел - просто никто не сложил их в одну картину.",
+      module7_author_p2: "Поэтому фреймворк здесь специально простой: 6 категорий, по 4 ранних сигнала в каждой и светофор health-score green / yellow / red. Он нужен не для отчёта, а чтобы вовремя поднять руку: эскалировать тимлиду, подключить compliance или честно поговорить с партнёром.",
+      module7_author_p3: "И важная оговорка: жёлтый статус - это не приговор проекту, а повод присмотреться. Большинство рисков снимается одним честным разговором, если начать его до того, как партнёр сам решит уйти.",
+      module7_hw_title: "Домашнее задание",
+      module7_hw_sub: "Применяем фреймворк к реальному проекту - уже после модуля, не до него.",
+      module7_hw_1: "Выберите одного своего реального партнёра (проект) для анализа.",
+      module7_hw_2: "Пройдите по всем 6 категориям риска по Health-score чек-листу ниже.",
+      module7_hw_3: "Отметьте сигналы, которые видите по каждой категории, и зафиксируйте комментарий.",
+      module7_hw_4: "Определите итоговый статус партнёра: green / yellow / red.",
+      module7_hw_5: "Обсудите результат и план действий с тимлидом.",
+      module7_hw_6: "Пройдите квиз «Радар партнёрских рисков» из 15 кейсов - определите тип риска в каждом описании партнёра.",
+      module7_hc_title: "Health-score чек-лист",
+      module7_hc_sub: "Отметьте сигналы, которые реально видите у своего партнёра. Статус пересчитается автоматически.",
+      module7_hc_status_green: "Green - сигналов риска нет. Стандартный ритм коммуникации и плановые QBR.",
+      module7_hc_status_yellow: "Yellow - 1-2 сигнала. Точечная проверка, эскалация тимлиду, усиленный мониторинг.",
+      module7_hc_status_red: "Red - 3+ сигнала или один критический. Немедленная эскалация, план удержания, вовлечение руководства.",
+      module7_hc_critical: "Есть критический сигнал",
+      module7_hc_reset: "Сбросить",
+      module8_title: "Переговоры о продлении и upsell",
+      module8_meta: "Скоро · новый модуль",
+      module8_hook: "Следующий модуль уже в разработке: как поднимать тему продления и расширения контракта, не превращаясь в продавца, и как честно обсуждать цену после сложного года. Подписчики получат его сразу после выхода - без доплаты.",
+      new_badge: "New!",
 
       mark_done_label: "Отметить модуль пройденным",
       mark_done_done: "Модуль пройден",
@@ -3947,7 +4134,7 @@
       audience_card3_desc: "Предварительная подготовка не нужна — каждый модуль заканчивается скриптом для разговора, который у вас уже есть на этой неделе.",
 
       completion_h2: "Идите ва-банк",
-      completion_p: "Отметьте все шесть модулей пройденными — и значок выше засияет золотом. Это откроет доступ к сертификату о прохождении Академии: он сформируется с вашим именем в ту же секунду, как вы его запросите.",
+      completion_p: "Отметьте все семь модулей пройденными — и значок выше засияет золотом. Это откроет доступ к сертификату о прохождении Академии: он сформируется с вашим именем в ту же секунду, как вы его запросите.",
       cert_example_label: "Пример сертификата — в вашем будет ваше собственное имя",
       completion_full: "Ва-банк. Теперь произнесите одну из этих фраз вслух, прежде чем закрыть вкладку.",
       completion_progress: " модулей осталось.",
@@ -3994,7 +4181,7 @@
       contact_channel_label: "Telegram-канал",
 
       progress_prefix: "Пройдено: ",
-      progress_suffix: " / 6",
+      progress_suffix: " / 7",
 
       topbar_subscribe: "🔓 Открыть все модули",
       topbar_subscribed: "✓ Подписка активна",
@@ -4013,11 +4200,11 @@
       slot_locked_body: "Станет доступно сразу после оформления подписки — вместе с остальными 5 модулями.",
       workshop_quiz_en_title: "Домашний квиз — пока только на русском",
       workshop_quiz_en_body: "Это упражнение из 12 вопросов пока доступно только на русском — английская версия готовится.",
-      paywall_body_locked: "Оформите подписку — и перед вами откроется не только этот модуль, но и все шесть, вместе с рабочими скриптами и презентациями на двух языках.",
+      paywall_body_locked: "Оформите подписку — и перед вами откроется не только этот модуль, но и все семь, вместе с рабочими скриптами и презентациями на двух языках.",
       paywall_cta: "Открыть по подписке",
 
       pricing_kicker: "Стоимость",
-      pricing_h2: "Одна подписка — все шесть модулей",
+      pricing_h2: "Одна подписка — все семь модулей",
       pricing_sub: "Отменить подписку можно в любой момент. Цена указана в долларах США, а рядом — её эквивалент в евро, российских и белорусских рублях.",
       plan_monthly_name: "Помесячно",
       plan_monthly_note: "списание каждый месяц",
@@ -4029,7 +4216,7 @@
       cis_payment_cta: "Написать мне →",
       plan_badge: "Выгоднее на 25%",
       plan_badge_promo: "Акционная цена",
-      plan_feature1: "Все 6 модулей открываются сразу",
+      plan_feature1: "Все 7 модулей открываются сразу",
       plan_feature2: "Обе презентации к каждому модулю (RU + EN)",
       plan_feature3: "Реальные скрипты и ролевые упражнения",
       plan_feature4: "Доступ ко всем будущим обновлениям",
@@ -4111,15 +4298,15 @@
       restore_error_code_invalid: "Код неверный или истёк. Попробуйте снова или запросите новый.",
       restore_error_expired: "Срок подписки истёк. Оформите её заново ниже, чтобы вернуть доступ.",
       restore_success_title: "Доступ восстановлен!",
-      restore_success_body: "Все 6 модулей теперь открыты и на этом устройстве.",
+      restore_success_body: "Все 7 модулей теперь открыты и на этом устройстве.",
       restore_success_cta: "Отлично",
       modal_success_title: "Подписка оформлена!",
-      modal_success_body: "Все 6 модулей теперь открыты. Вернитесь наверх и приступайте.",
+      modal_success_body: "Все 7 модулей теперь открыты. Вернитесь наверх и приступайте.",
       modal_success_cta: "Начать обучение →",
 
       cert_cta: "🎓 Получить сертификат",
       cert_view_cta: "🎓 Посмотреть сертификат",
-      cert_modal_title: "Вы прошли все 6 модулей!",
+      cert_modal_title: "Вы прошли все 7 модулей!",
       cert_modal_sub: "Введите email — и мы отправим ваш сертификат о прохождении Академии.",
       cert_email_placeholder: "you@company.com",
       cert_submit_cta: "Отправить сертификат",
@@ -4277,6 +4464,7 @@
             checklist: ["Anchor was specific, not generic", "Bridge into work felt natural", "Stayed under 3 minutes"]
           }
         },
+        7: {"script": [{"who": "client", "text": "Honestly, it's a difficult period right now. Can we push the invoice payment back another couple of weeks?"}, {"who": "you", "text": "Thanks for telling me straight. Let's fix a new date together - and while we're at it, let's look at deposits over the last two months so I understand the full picture and can suggest a schedule that actually works."}], "quiz": [{"q": "Your partner has 2 risk signals and none of them is critical. What's the health-score status?", "options": ["Green - two signals is normal noise", "Yellow - spot-check and flag to your team lead", "Red - escalate immediately"], "correct": 1, "explain": "1-2 signals is yellow: look closer and tell your team lead, but it isn't an emergency yet."}, {"q": "The partner reframes their goal from \"growing new players\" to \"retaining the base\" and runs fewer promos. Which risk is this?", "options": ["Traffic & marketing", "Regulatory", "Team & management"], "correct": 0, "explain": "A KPI shift from growth to retention usually means acquisition channels stopped working - audit the funnel together."}], "task": {"solo": "Pick one real partner. Go through the 6 categories and write down every signal you actually see - then set the status (green / yellow / red) and one next step.", "group": "Your partner describes a project with 3 signals out loud. Name the category of each signal, the overall status, and the first action you'd take.", "checklist": ["Named a category for every signal", "Set a green / yellow / red status", "Named one concrete next step"]}},
         6: {
           script: [
             {who:"client", text:"This is the third time! Do you even know what you're doing?!"},
@@ -4444,6 +4632,7 @@
             checklist: ["Якорь был конкретным, а не общим", "Переход к работе выглядел естественно", "Уложились в 3 минуты"]
           }
         },
+        7: {"script": [{"who": "client", "text": "Честно, сейчас сложный период. Можем сдвинуть оплату по инвойсу ещё на пару недель?"}, {"who": "you", "text": "Спасибо, что говорите прямо. Давайте вместе зафиксируем новую дату - и заодно посмотрим на депозиты за последние два месяца, чтобы я видел всю картину и мог предложить график, который реально сработает."}], "quiz": [{"q": "У партнёра 2 сигнала риска, ни один не критический. Какой статус health-score?", "options": ["Green - два сигнала это нормальный шум", "Yellow - точечная проверка и эскалация тимлиду", "Red - немедленная эскалация"], "correct": 1, "explain": "1-2 сигнала - это yellow: присмотреться и сообщить тимлиду, но это ещё не пожар."}, {"q": "Партнёр сменил цель с «роста новой аудитории» на «удержание базы» и реже запускает промо. Какой это риск?", "options": ["Трафик и маркетинг", "Регуляторный", "Команда и менеджмент"], "correct": 0, "explain": "Смена KPI с роста на удержание обычно значит, что каналы привлечения перестали работать - нужен совместный аудит воронки."}], "task": {"solo": "Выберите одного реального партнёра. Пройдите по 6 категориям и выпишите сигналы, которые реально видите, - затем определите статус (green / yellow / red) и один следующий шаг.", "group": "Партнёр вслух описывает проект с 3 сигналами. Назовите категорию каждого сигнала, итоговый статус и первое действие, которое вы сделаете.", "checklist": ["Назвали категорию для каждого сигнала", "Определили статус green / yellow / red", "Назвали один конкретный следующий шаг"]}},
         6: {
           script: [
             {who:"client", text:"Это уже третий раз! Вы вообще понимаете, что делаете?!"},
@@ -4664,6 +4853,7 @@
               "3. The door stays open — a short check-in in 1–2 months"
             ], note:"We don't know what's happening on the client's side. Silence doesn't mean they're ignoring you. So we don't burn bridges, and we don't push." }
         ],
+        7: [{"title": "What this module covers", "bullets": ["01 Risk map - 6 categories of why projects close", "02 Early signals - what an AM can spot before a risk turns critical", "03 Responding to risk - concrete AM actions for each category", "04 Geo specifics - how a country's regulator and market change the risk profile", "05 Methodology - health-score: partner status green / yellow / red", "06 Practice - a case walkthrough and applying the framework to your own partner"], "note": "Poker and casino projects close for understandable reasons, and almost always you could have seen it coming. By the end of the module you'll have a 6-category framework, a way to score partner status, and a response plan for each type of signal."}, {"title": "6 categories of why projects close", "bullets": ["1. Regulatory risk - licenses, compliance, taxes", "2. Financial risk - cash flow, GGR, payment discipline", "3. Traffic & marketing - CPA, conversion, retention", "4. Product & tech - bugs, downtime, outdated features", "5. Competition & market - new players, bonus wars, demand", "6. Team & management - new decision-maker, reorganisation, key people leaving"], "note": "Every project closure we've looked at fits into these six categories. Next - one slide per category: what happens and which signals you can catch early. Ask yourself: which category shows up most often with your partners?"}, {"title": "Risk 1 of 6 · Regulatory risk", "bullets": ["What happens: The regulator changes license requirements, raises taxes or restricts the product - the partner has to urgently switch jurisdiction, change the product or leave the market.", "Signal: Announced changes to gambling regulation in the partner's market", "Signal: The partner asks about switching license or jurisdiction", "Signal: Tighter KYC/AML requirements, payment methods getting blocked", "Signal: The partner publicly talks about pausing the market"], "note": "The key question for an AM: how do you find out about regulatory changes in your partner's market before they become a problem?"}, {"title": "Risk 2 of 6 · Financial risk", "bullets": ["What happens: The partner can't keep cash flow stable: late payments to the provider, falling GGR, trouble with payment systems or investors.", "Signal: Delays or disputes over your invoices", "Signal: A sharp drop in GGR/deposits 2-3 months in a row", "Signal: Payment providers changed or lost", "Signal: Signals of trouble with funding or investors"], "note": "Money is the most honest indicator. Payments drifting by a week usually show up before any words about \"a difficult period\"."}, {"title": "Risk 3 of 6 · Traffic & marketing", "bullets": ["What happens: The partner can't acquire and keep players profitably: CPA goes up, conversion and retention go down - the business stops paying for itself.", "Signal: CPA/CPL rising while ROI stays flat or falls", "Signal: Lower traffic-to-deposit conversion", "Signal: Falling retention and repeat deposits", "Signal: Key affiliates or streamers walking away"], "note": "Which marketing metrics do you check regularly, and which only after something has already gone wrong? The gap between those two lists is your risk zone."}, {"title": "Risk 4 of 6 · Product & tech", "bullets": ["What happens: The product can't keep up technically: bugs, downtime, outdated features - players move to competitors with a better UX.", "Signal: More complaints about bugs, downtime, slowness", "Signal: Delays in shipping new features and tournaments", "Signal: The partner compares the product unfavourably to competitors", "Signal: Engagement dropping (sessions, average time in game)"], "note": "A product falling behind rarely shows up in metrics first - it shows up in conversations, when the partner starts comparing you to competitors."}, {"title": "Risk 5 of 6 · Competition & market", "bullets": ["What happens: Competition in the market heats up or overall demand falls - the partner loses share regardless of how well they work.", "Signal: Strong new players entering the partner's market", "Signal: Aggressive bonus offers from competitors", "Signal: Overall interest in the vertical falling in the market", "Signal: The partner openly says they're losing share"], "note": "The partner often can't control this risk - but an AM can help rebuild the value proposition ahead of time."}, {"title": "Risk 6 of 6 · Team & management", "bullets": ["What happens: Changes inside the partner's team make the project worse managed: key people leave, priorities shift, a reorganisation happens.", "Signal: The partner's contact person or decision-maker changes", "Signal: Slower decisions, lower engagement", "Signal: Key people leaving on the partner's side (marketing, product)", "Signal: Signals of restructuring or a change of owners"], "note": "A change of contact is the most underrated signal. A new person doesn't know the history of your agreements and can easily reopen everything."}, {"title": "5 steps to assess risk before kick-off", "bullets": ["1. Market profile - regulator, licensing requirements, competition", "2. Financial stability - sources of funding, ability to pay", "3. Product readiness - integrations, launch timeline, technical risks", "4. Marketing strategy - traffic sources, how realistic the CPA/ROI is", "5. The partner's team - experience, decision-maker, speed of decisions"], "note": "The best moment to catch a risk is before the contract is signed or right after launch. Which of these five steps are you already doing today, and which should you add to your process?"}, {"title": "Partner health-score", "bullets": ["🟢 Green - 0 risk signals → standard communication rhythm, planned QBRs", "🟡 Yellow - 1-2 signals → spot-check, flag to your team lead, closer monitoring", "🔴 Red - 3+ signals or 1 critical → escalate now, retention plan, involve leadership"], "note": "A health-score isn't a grade for the partner - it's a measure of how closely you need to be watching right now. If you scored today, how many of your partners would land in the yellow zone?"}, {"title": "Risk by market", "bullets": ["UK / Ireland - strict regulator (UKGC), high responsible-gambling bar → tighter advertising rules, rising compliance costs", "Malta / EU - MGA license, growing AML requirements → tax changes, separate national licenses in individual EU countries", "Brazil - newly regulated market, licensing since 2025 → unsettled rules at the start, licensing delays", "Peru and LatAm - fragmented regulation country by country → unstable rules, currency risk", "CIS - hard restrictions, grey zones, offshore brands → blocking, payment and reputational risk", "Philippines / offshore Asia - offshore licensing → political risk, offshore licenses tightening"], "note": "The risk profile depends heavily on geo: mature markets with a strict regulator, growing markets with unsettled rules, and grey zones with high payment risk. Which markets do your partners operate in?"}, {"title": "Playbook: AM actions by risk category", "bullets": ["Regulatory risk → ask for the partner's adaptation plan, bring in Legal/Compliance", "Financial risk → check payment discipline, agree a repayment plan, offer flexible terms", "Traffic & marketing → joint CPA/ROI audit, rethink traffic channels", "Product & tech → prioritise bug fixes, an honest roadmap for the quarter", "Competition & market → benchmark against competitors, refresh the value proposition", "Team & management → get in touch with the new decision-maker, put agreements in writing"], "note": "One concrete immediate action per category. Which of these is hardest to actually do in practice, and why?"}, {"title": "Practice: applying the framework", "bullets": ["Round 1 · case: partner \"X\", a casino in LatAm - invoices 3+ weeks late, traffic halved, the contact changed with no explanation", "Work out: which category does each signal belong to, and is the partner green, yellow or red?", "Round 2 · homework: the same framework, applied to your own real partner", "Health-score checklist → status → discuss the plan with your team lead", "Risk Radar quiz: 15 cases where you identify the type of risk"], "note": "The case has three signals from three different categories: financial, traffic & marketing, team. Three signals already means red, even if each one alone looks tolerable."}, {"title": "Glossary", "bullets": ["AM - account manager, owns the partner relationship · KPI - key performance indicator", "KYC / AML - know your customer / anti-money laundering", "ROI - return on marketing investment · CPA / CPL - cost per acquired player / per lead", "GGR - gross gaming revenue, taken from the financial reports in the project's back office", "LTV (casino) = average GGR per player per month × average player lifetime", "LTV (poker) = average rake per player per month × average player lifetime", "CTR / CR - click-through rate / conversion rate · SEO / ASO - search / app-store optimisation", "QBR - quarterly business review with the partner · UX - how easy the product is for a player", "MGA - Malta/EU regulator · UKGC - UK regulator · POGO - Philippine offshore gaming license"], "note": "Reference slide - every term and abbreviation from this module, spelled out."}],
         6: [
           { title:"Where the line is", bullets:[
               "Earlier topics were about technique with a difficult-but-normal client. Today is about the line: when a client isn't just difficult, but toxic",
@@ -4899,6 +5089,7 @@
               "3. Дверь открыта — короткий check-in через 1–2 месяца"
             ], note:"Мы не знаем, что происходит на стороне клиента. Молчание — не значит игнор. Поэтому мы не сжигаем мосты и не давим." }
         ],
+        7: [{"title": "О чём этот модуль", "bullets": ["01 Карта рисков - 6 категорий причин закрытия проектов", "02 Ранние сигналы - что AM может заметить до того, как риск станет критичным", "03 Реакция на риск - конкретные действия AM по каждой категории", "04 Гео-специфика - как регулятор и рынок страны меняют профиль риска", "05 Методология - health-score: статус партнёра green / yellow / red", "06 Практика - разбор кейса и применение фреймворка к своему партнёру"], "note": "Проекты в покере и казино закрываются по понятным причинам, и почти всегда их можно было заметить заранее. К концу модуля у вас будет фреймворк из 6 категорий, методология оценки статуса партнёра и план реакции на каждый тип сигнала."}, {"title": "6 категорий причин закрытия проекта", "bullets": ["1. Регуляторный риск - лицензии, комплаенс, налоги", "2. Финансовый риск - cashflow, GGR, платёжная дисциплина", "3. Трафик и маркетинг - CPA, конверсия, retention", "4. Продукт и технологии - баги, простои, устаревший функционал", "5. Конкуренция и рынок - новые игроки, бонусные войны, спрос", "6. Команда и менеджмент - смена ЛПР, реорганизация, уход ключевых людей"], "note": "Все причины закрытия проектов укладываются в эти шесть категорий. Дальше - по слайду на каждую: что происходит и какие сигналы можно поймать заранее. Вопрос себе: какая категория чаще всего встречается у ваших партнёров?"}, {"title": "Риск 1 из 6 · Регуляторный риск", "bullets": ["Что происходит: Регулятор меняет требования к лицензии, повышает налоги или ограничивает продукт - партнёр вынужден срочно менять юрисдикцию, продукт или уходить с рынка.", "Сигнал: Анонсы изменений в регулировании гемблинга на маркете партнёра", "Сигнал: Партнёр запрашивает информацию о смене лицензии или юрисдикции", "Сигнал: Рост требований к KYC/AML, блокировки платёжных методов", "Сигнал: Публичные заявления партнёра о паузе на маркете"], "note": "Главный вопрос AM: как вы узнаёте об изменениях в регулировании на маркете партнёра - до того, как это станет проблемой?"}, {"title": "Риск 2 из 6 · Финансовый риск", "bullets": ["Что происходит: Партнёр не может обеспечить стабильный cashflow: задержки выплат провайдеру, падение GGR, проблемы с платёжными системами или инвесторами.", "Сигнал: Задержки или споры по вашим инвойсам", "Сигнал: Резкое падение GGR/депозитов 2-3 месяца подряд", "Сигнал: Смена или потеря платёжных провайдеров", "Сигнал: Сигналы о проблемах с фондированием или инвесторами"], "note": "Деньги - самый честный индикатор. Сдвиг платежей на неделю чаще всего появляется раньше любых слов о «сложном периоде»."}, {"title": "Риск 3 из 6 · Трафик и маркетинг", "bullets": ["Что происходит: Партнёр не может рентабельно привлекать и удерживать игроков: растёт CPA, падает конверсия и retention - бизнес перестаёт окупаться.", "Сигнал: Рост CPA/CPL при неизменном или падающем ROI", "Сигнал: Снижение конверсии из трафика в депозит", "Сигнал: Падение retention и повторных депозитов", "Сигнал: Уход ключевых аффилиатов или блогеров"], "note": "Какие маркетинговые метрики вы смотрите регулярно, а какие - только когда уже что-то пошло не так? Разница между этими списками и есть зона риска."}, {"title": "Риск 4 из 6 · Продукт и технологии", "bullets": ["Что происходит: Продукт технически не выдерживает конкуренции: баги, простои, устаревший функционал - игроки уходят к конкурентам с лучшим UX.", "Сигнал: Рост жалоб на баги, простои, медленную работу", "Сигнал: Задержки с релизами новых фич и турниров", "Сигнал: Партнёр сравнивает продукт с конкурентами не в свою пользу", "Сигнал: Падение engagement (сессии, среднее время в игре)"], "note": "Отставание продукта обычно всплывает не в метриках, а в разговорах: партнёр начинает сравнивать вас с конкурентами."}, {"title": "Риск 5 из 6 · Конкуренция и рынок", "bullets": ["Что происходит: На маркете усиливается конкуренция или падает общий спрос - партнёр теряет долю рынка независимо от качества своей работы.", "Сигнал: Выход новых сильных игроков на маркет партнёра", "Сигнал: Агрессивные бонусные предложения у конкурентов", "Сигнал: Общее снижение интереса к вертикали на маркете", "Сигнал: Партнёр напрямую сообщает о потере доли"], "note": "Этот риск партнёр часто не контролирует - но AM может заранее помочь пересобрать ценностное предложение."}, {"title": "Риск 6 из 6 · Команда и менеджмент", "bullets": ["Что происходит: Внутри команды партнёра происходят изменения, которые снижают качество управления проектом: уход ключевых людей, смена приоритетов, реорганизация.", "Сигнал: Смена контактного лица или ЛПР со стороны партнёра", "Сигнал: Задержки в принятии решений, снижение вовлечённости", "Сигнал: Уход ключевых сотрудников партнёра (маркетинг, продукт)", "Сигнал: Сигналы о реструктуризации или смене владельцев"], "note": "Смена контакта - самый недооценённый сигнал. Новый человек не знает историю договорённостей и легко пересматривает всё с нуля."}, {"title": "5 шагов оценки риска до кик-оффа", "bullets": ["1. Профиль маркета - регулятор, требования лицензирования, конкуренция", "2. Финансовая устойчивость - источники фондирования, платёжеспособность", "3. Продуктовая готовность - интеграции, сроки запуска, технические риски", "4. Маркетинговая стратегия - источники трафика, реалистичность CPA/ROI", "5. Команда партнёра - опыт, ЛПР, скорость принятия решений"], "note": "Лучший момент поймать риск - до подписания контракта или сразу после старта. Что из этих пяти шагов вы уже делаете сегодня, а что стоит добавить в свой процесс?"}, {"title": "Health-score партнёра", "bullets": ["🟢 Green - 0 сигналов риска → стандартный ритм коммуникации, плановые QBR", "🟡 Yellow - 1-2 сигнала → точечная проверка, эскалация тимлиду, усиленный мониторинг", "🔴 Red - 3+ сигнала или 1 критический → немедленная эскалация, план удержания, вовлечение руководства"], "note": "Health-score - это не оценка партнёра, а оценка того, насколько внимательно вам нужно сейчас смотреть. Если оценить прямо сейчас - сколько ваших партнёров вы бы отнесли к жёлтой зоне?"}, {"title": "Риск в разрезе рынка", "bullets": ["UK / Ирландия - строгий регулятор (UKGC), высокие требования к ответственной игре → ужесточение рекламных ограничений, рост compliance-costs", "Мальта / ЕС - лицензия MGA, растущие требования AML → изменения налогового режима, национальные лицензии отдельных стран ЕС", "Бразилия - новый регулируемый рынок, лицензирование с 2025 → неопределённость правил на старте, задержки лицензирования", "Перу и Латам - разрозненное регулирование по странам → нестабильность правил, валютные риски", "СНГ - жёсткие ограничения, серые зоны, офшорные бренды → блокировки, платёжные и репутационные риски", "Филиппины / офшорная Азия - офшорное лицензирование → политические риски, ужесточение офшорных лицензий"], "note": "Профиль риска сильно зависит от гео: зрелые рынки со строгим регулятором, растущие рынки с неопределённостью правил и серые зоны с высокими платёжными рисками. На каких маркетах работают ваши партнёры?"}, {"title": "Playbook: действия AM по категориям риска", "bullets": ["Регуляторный риск → уточнить у партнёра план адаптации, подключить Legal/Compliance", "Финансовый риск → проверить платёжную дисциплину, зафиксировать план погашения, предложить гибкие условия", "Трафик и маркетинг → совместный аудит CPA/ROI, пересмотр каналов трафика", "Продукт и технологии → приоритизировать баг-фиксы, честный роадмап на квартал", "Конкуренция и рынок → бенчмарк против конкурентов, обновить value proposition", "Команда и менеджмент → установить контакт с новым ЛПР, зафиксировать договорённости письменно"], "note": "На каждую категорию - одно конкретное немедленное действие. Какое из них сложнее всего реализовать на практике и почему?"}, {"title": "Практика: применяем фреймворк", "bullets": ["Раунд 1 · кейс: партнёр «Х», казино в Латам - инвойсы с задержкой 3+ недели, трафик просел вдвое, сменился контакт без объяснений", "Разберите: к какой категории относится каждый сигнал и какой статус у партнёра - green, yellow или red?", "Раунд 2 · домашнее задание: тот же фреймворк - к своему реальному партнёру", "Health-score чек-лист → статус → обсуждение плана с тимлидом", "Квиз «Радар партнёрских рисков»: 15 кейсов на определение типа риска"], "note": "В кейсе три сигнала из трёх разных категорий: финансовый, трафик и маркетинг, команда. Три сигнала - это уже red, даже если каждый по отдельности выглядит терпимо."}, {"title": "Глоссарий терминов", "bullets": ["AM - account manager, отвечает за партнёра · KPI - ключевой показатель эффективности", "KYC / AML - верификация клиента / противодействие отмыванию денег", "ROI - возврат на инвестиции в маркетинг · CPA / CPL - цена за игрока / за лид", "GGR - валовой игровой доход, берётся из финансовых отчётов в back office проекта", "LTV (казино) = средний GGR на игрока в месяц × средняя продолжительность жизни игрока", "LTV (покер) = средний рейк на игрока в месяц × средняя продолжительность жизни игрока", "CTR / CR - кликабельность / конверсия · SEO / ASO - оптимизация под поисковики / сторы", "QBR - квартальный обзор бизнеса с партнёром · UX - удобство продукта для игрока", "MGA - регулятор Мальты/ЕС · UKGC - регулятор Великобритании · POGO - офшорная игорная лицензия Филиппин"], "note": "Справочный слайд - все термины и аббревиатуры модуля с расшифровкой."}],
         6: [
           { title:"Где проходит граница", bullets:[
               "Прошлые темы были про технику разговора со сложным клиентом. Сегодня — про границу: когда клиент не просто сложный, а токсичный",
@@ -6630,7 +6821,7 @@ function duelRefreshLang(){
   let certificateClaimed = false;
   let certAutoShown = false;
   let certEmail = '';
-  const state = {1:false,2:false,3:false,4:false,5:false,6:false};
+  const state = {1:false,2:false,3:false,4:false,5:false,6:false,7:false};
 
   function escapeHtml(s){
     return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
@@ -6695,15 +6886,18 @@ function duelRefreshLang(){
           <div class="practice-panel active" data-mod="${mod}" data-panel="script">
             <p class="practice-mode-hint">${escapeHtml(scriptHint)}</p>
             <div class="script-dialogue">${scriptHtml}</div>
+            ${mod === 7 ? m7QuestionsHtml() : ''}
           </div>
-          <div class="practice-panel" data-mod="${mod}" data-panel="quiz">${quizHtml}</div>
+          <div class="practice-panel" data-mod="${mod}" data-panel="quiz">${quizHtml}${mod === 7 ? '<div class="risk-radar-slot" data-mod="7"></div>' : ''}</div>
           <div class="practice-panel" data-mod="${mod}" data-panel="task">
             <p class="task-text"><b>${escapeHtml(taskPrefix)}</b> ${escapeHtml(taskText)}</p>
             <ul class="task-checklist">${checklistHtml}</ul>
+            ${mod === 7 ? m7HomeworkHtml() + '<div class="health-check-slot" data-mod="7"></div>' : ''}
           </div>
         </div>
       `;
     });
+    if(typeof renderHealthCheck === 'function'){ renderHealthCheck(); renderRiskRadar(); }
     // keep module-body height in sync now that content was (re)generated
     document.querySelectorAll('.module.open .module-body').forEach(body=>{
       body.style.maxHeight = body.scrollHeight + 'px';
@@ -6748,7 +6942,7 @@ function duelRefreshLang(){
   // Deck viewer — renders the redesigned slide deck for each
   // module, with per-slide author commentary.
   // ============================================================
-  const deckState = {1:0,2:0,3:0,4:0,5:0,6:0};
+  const deckState = {1:0,2:0,3:0,4:0,5:0,6:0,7:0};
 
   function renderDeckBlocks(){
     const dict = DECK_DATA[currentLang];
@@ -7048,6 +7242,190 @@ function duelRefreshLang(){
     });
   }
 
+
+  // ============================================================
+  // Module 7 - health-score checklist + "Risk Radar" homework quiz
+  // (15 partner cases, adapted from workshop topic 08). Runs
+  // locally, answer order shuffled on every run, no submission.
+  // ============================================================
+  const RISK_CATS = {"reg": {"color": "#F2B84B", "ru": "Регуляторный риск", "en": "Regulatory risk"}, "fin": {"color": "#2dd4bf", "ru": "Финансовый риск", "en": "Financial risk"}, "mkt": {"color": "#E44EFF", "ru": "Трафик и маркетинг", "en": "Traffic & marketing"}, "prod": {"color": "#4EA8DE", "ru": "Продукт и технологии", "en": "Product & tech"}, "comp": {"color": "#F2704B", "ru": "Конкуренция и рынок", "en": "Competition & market"}, "team": {"color": "#6FCF97", "ru": "Команда и менеджмент", "en": "Team & management"}};
+  const RISK_CAT_ORDER = ["reg","fin","mkt","prod","comp","team"];
+  const RISK_SIGNALS = {"ru": {"reg": ["Анонсы изменений в регулировании гемблинга на маркете партнёра", "Партнёр запрашивает информацию о смене лицензии или юрисдикции", "Рост требований к KYC/AML, блокировки платёжных методов", "Публичные заявления партнёра о паузе на маркете"], "fin": ["Задержки или споры по вашим инвойсам", "Резкое падение GGR/депозитов 2-3 месяца подряд", "Смена или потеря платёжных провайдеров", "Сигналы о проблемах с фондированием или инвесторами"], "mkt": ["Рост CPA/CPL при неизменном или падающем ROI", "Снижение конверсии из трафика в депозит", "Падение retention и повторных депозитов", "Уход ключевых аффилиатов или блогеров"], "prod": ["Рост жалоб на баги, простои, медленную работу", "Задержки с релизами новых фич и турниров", "Партнёр сравнивает продукт с конкурентами не в свою пользу", "Падение engagement (сессии, среднее время в игре)"], "comp": ["Выход новых сильных игроков на маркет партнёра", "Агрессивные бонусные предложения у конкурентов", "Общее снижение интереса к вертикали на маркете", "Партнёр напрямую сообщает о потере доли"], "team": ["Смена контактного лица или ЛПР со стороны партнёра", "Задержки в принятии решений, снижение вовлечённости", "Уход ключевых сотрудников партнёра (маркетинг, продукт)", "Сигналы о реструктуризации или смене владельцев"]}, "en": {"reg": ["Announced changes to gambling regulation in the partner's market", "The partner asks about switching license or jurisdiction", "Tighter KYC/AML requirements, payment methods getting blocked", "The partner publicly talks about pausing the market"], "fin": ["Delays or disputes over your invoices", "A sharp drop in GGR/deposits 2-3 months in a row", "Payment providers changed or lost", "Signals of trouble with funding or investors"], "mkt": ["CPA/CPL rising while ROI stays flat or falls", "Lower traffic-to-deposit conversion", "Falling retention and repeat deposits", "Key affiliates or streamers walking away"], "prod": ["More complaints about bugs, downtime, slowness", "Delays in shipping new features and tournaments", "The partner compares the product unfavourably to competitors", "Engagement dropping (sessions, average time in game)"], "comp": ["Strong new players entering the partner's market", "Aggressive bonus offers from competitors", "Overall interest in the vertical falling in the market", "The partner openly says they're losing share"], "team": ["The partner's contact person or decision-maker changes", "Slower decisions, lower engagement", "Key people leaving on the partner's side (marketing, product)", "Signals of restructuring or a change of owners"]}};
+  const RISK_RADAR = {
+    ru: { title: "Радар партнёрских рисков", subtitle: "15 кейсов · определите категорию риска и план реакции AM · подсказка по желанию",
+          q_of: (i,n)=>`Кейс ${i} из ${n}`, hint_show: "💡 Показать подсказку", hint_hide: "💡 Скрыть подсказку",
+          next: "Следующий кейс →", results: "Посмотреть результат →", restart: "Пройти заново", correct: "Верно.", wrong: "Не совсем.",
+          pct: p=>`${p}% верных ответов`, by_cat: "По категориям риска",
+          band_great: "Фреймворк усвоен - можно применять на реальных партнёрах", band_ok: "Хороший результат - посмотрите категории, где были ошибки", band_low: "Стоит вернуться к слайдам модуля и пройти квиз ещё раз",
+          questions: [{"scenario": "Партнёр - оператор казино и live-покера для азиатской аудитории, лицензирован через PAGCOR (Филиппины). За последний месяц в новостях трижды поднимался вопрос об ужесточении регулирования офшорных операторов, а сам партнёр впервые запросил у вас данные о запасном плане на случай отзыва лицензии.", "hint": "Тревога здесь не про деньги и не про трафик, а про юридический статус работы на маркете.", "cat": "reg", "options": ["Регуляторный риск - верифицировать статус лицензии, подключить legal/compliance и начать прорабатывать alt-market roadmap.", "Финансовый риск - провести health-check юнит-экономики и предложить гибкие условия оплаты.", "Риск конкуренции - проанализировать УТП и предложить персональные бонусные условия.", "Риск команды - ускорить онбординг нового контакта на стороне партнёра."], "explain": "Запрос запасного плана на случай отзыва лицензии и волна новостей о регуляторе - классический сигнал регуляторного риска. Немедленная реакция AM - верифицировать статус лицензии и подключить compliance, среднесрочно - прорабатывать alt-market roadmap и диверсификацию гео."}, {"scenario": "Партнёр (казино, ЕС) последние два месяца платит по инвойсам на 8-10 дней позже обычного графика. На вопрос о причине маркетинг-директор уклончиво отвечает, что «сейчас сложный период», и просит отсрочку по следующему платежу.", "hint": "Ключевое слово здесь - «платит». Это не про регулятор и не про продукт.", "cat": "fin", "options": ["Финансовый риск - провести financial health-check и предложить гибкие условия оплаты.", "Регуляторный риск - подключить legal/compliance для проверки условий сотрудничества.", "Продуктовый риск - эскалировать баги в приоритет и обсудить honest roadmap.", "Риск конкуренции - провести анализ УТП и предложить custom bonus terms."], "explain": "Задержки платежей и уклончивые ответы про «сложный период» - прямой сигнал финансового риска. Начните с health-check финансового состояния партнёра и предложите гибкие условия оплаты, вместо того чтобы просто давить на срок."}, {"scenario": "Ваш основной контакт на стороне партнёра (покер-румы, СНГ) две недели не отвечает на письма. На последнем созвоне присутствовал новый человек, который не был в курсе истории сотрудничества и договорённостей по бонусной программе.", "hint": "Сигнал здесь не про деньги и не про продукт, а про то, кто сейчас по ту сторону стола.", "cat": "team", "options": ["Риск команды и менеджмента - быстро онбордить нового контакта и заново презентовать ценность сотрудничества.", "Риск конкуренции - предложить эксклюзивные бонусные условия, чтобы удержать партнёра.", "Финансовый риск - пересмотреть модель сотрудничества с CPA на revshare.", "Продуктовый риск - подготовить план по новым игровым провайдерам."], "explain": "Смена контакта, который не знаком с историей отношений, - классический сигнал риска команды и менеджмента. Нужно быстро онбордить нового человека и заново показать ценность партнёрства, пока отношения не разладились из-за потери контекста."}, {"scenario": "На маркете, где работает ваш партнёр (казино, Латам), два месяца назад один из конкурентов запустил агрессивную бонусную кампанию с крупным welcome-пакетом. Партнёр стал чаще сравнивать условия сотрудничества с конкурентами и запрашивать более выгодный рейкбэк.", "hint": "Триггером стало не решение самого партнёра, а действие третьей стороны на рынке.", "cat": "comp", "options": ["Риск конкуренции и рынка - проанализировать УТП и предложить персональные бонусные условия.", "Регуляторный риск - готовить alt-market roadmap на случай ужесточения правил.", "Риск команды - ускорить онбординг нового контакта партнёра.", "Продуктовый риск - честно обсудить сроки обновления roadmap платформы."], "explain": "Агрессивная активность конкурента и запросы более выгодных условий - сигнал риска конкуренции и рынка. Правильный ход - анализ УТП и персональные условия, а не пересмотр всей финансовой модели."}, {"scenario": "За последний месяц количество тикетов в поддержку по проблемам с выводом средств у партнёра (казино, Tier 1) выросло почти вдвое. Партнёр стал чаще запрашивать roadmap развития платформы и выражает нетерпение по срокам.", "hint": "Ищите, где именно возникают жалобы - в работе платформы, а не в деньгах или маркетинге.", "cat": "prod", "options": ["Продуктовый и технологический риск - эскалировать баги в приоритет и честно обсудить roadmap.", "Финансовый риск - предложить гибкие условия оплаты на ближайший квартал.", "Риск конкуренции - предложить custom bonus terms, чтобы сгладить недовольство.", "Регуляторный риск - верифицировать статус лицензии партнёра."], "explain": "Рост тикетов по выводу средств и нетерпеливые запросы roadmap - сигнал продуктового и технологического риска. Приоритизируйте баги и дайте честную коммуникацию по срокам, не обещая невозможного."}, {"scenario": "Партнёр (казино, недавно запущенный проект) уже третий месяц подряд показывает отрицательный ROI на маркетинг. Объём депозитов не растёт, хотя бюджет на трафик не срезали.", "hint": "Три месяца подряд не сходится одна и та же метрика - это финансовый сигнал, а не про людей или продукт.", "cat": "fin", "options": ["Финансовый риск - провести health-check юнит-экономики и рассмотреть пересмотр модели и KPI.", "Риск конкуренции - провести QBR с акцентом на долгосрочную ценность партнёрства.", "Риск команды - выстроить отношения на 2+ уровнях контактов.", "Продуктовый риск - подготовить план по новым провайдерам игр."], "explain": "Устойчиво отрицательный ROI - сигнал финансового риска, даже если бюджет формально не урезали. Нужен health-check юнит-экономики и, возможно, пересмотр модели сотрудничества и KPI."}, {"scenario": "Партнёр (покер, Tier 2) снизил частоту запуска новых маркетинговых кампаний. Несколько ключевых аффилиатов, которые раньше приводили основной трафик, перестали работать с партнёром за последние два месяца.", "hint": "Смотрите, где именно снижается активность - в привлечении новых игроков, а не в существующей базе.", "cat": "mkt", "options": ["Риск трафика и маркетинга - провести совместный аудит воронки и протестировать новые каналы.", "Регуляторный риск - подключить compliance для проверки требований маркета.", "Риск команды - заново презентовать ценность сотрудничества.", "Продуктовый риск - эскалировать баги платформы в приоритет."], "explain": "Отток ключевых аффилиатов и падение частоты кампаний - типичный сигнал риска трафика и маркетинга. Нужен совместный аудит воронки и поиск новых каналов, а не финансовые или продуктовые меры."}, {"scenario": "Партнёр планирует расширяться на несколько новых стран ЕС. В разговоре выяснилось, что команда партнёра рассчитывала на одну лицензию MGA для всего Евросоюза и не закладывала бюджет на отдельные требования Франции (ANJ) и Германии (GGL).", "hint": "Путаница здесь не про деньги, а про опасное заблуждение «одна лицензия на весь регион».", "cat": "reg", "options": ["Регуляторный риск - подключить legal/compliance и проверить требования по каждой стране ЕС отдельно.", "Риск конкуренции - предложить персональные бонусные условия на новых маркетах.", "Продуктовый риск - подготовить план по новым фичам для локализации.", "Финансовый риск - пересмотреть модель сотрудничества с CPA на revshare."], "explain": "Регуляторная фрагментация ЕС - MGA не покрывает Францию, Германию и другие страны с собственным регулятором - классический регуляторный риск при выходе на новые гео. Нужно заранее проверить требования каждой отдельной юрисдикции."}, {"scenario": "В компании партнёра прошло слияние двух отделов. После этого бюджет на партнёрский маркетинг урезали, а решения по сотрудничеству теперь принимает новый руководитель, который раньше не работал с гемблинг-проектами.", "hint": "Урезанный бюджет здесь - следствие, а не причина. Ищите, что изменилось в структуре компании партнёра.", "cat": "team", "options": ["Риск команды и менеджмента - заново презентовать ценность сотрудничества новому руководителю и выстроить отношения на нескольких уровнях.", "Финансовый риск - провести health-check ROI и предложить скидку на ближайший квартал.", "Продуктовый риск - подготовить честную коммуникацию по roadmap платформы.", "Регуляторный риск - начать прорабатывать alt-market roadmap."], "explain": "Реорганизация и смена лица, принимающего решения, без опыта в гемблинге - риск команды и менеджмента, даже если внешне это похоже на финансовый сигнал (урезанный бюджет). Нужно заново выстроить отношения с новым руководителем."}, {"scenario": "На маркете партнёра (казино, Tier 2) за последний год количество лицензированных операторов выросло почти вдвое. Партнёр отмечает, что стоимость привлечения игрока выросла, а конкуренты предлагают всё более щедрые условия по рейкбэку.", "hint": "Здесь дело не в одном агрессивном конкуренте, а в насыщении всего рынка.", "cat": "comp", "options": ["Риск конкуренции и рынка - проанализировать УТП, предложить персональные условия и провести QBR о долгосрочной ценности.", "Регуляторный риск - верифицировать статус лицензии партнёра на маркете.", "Продуктовый риск - эскалировать баги платформы в приоритет.", "Риск команды - ускорить онбординг нового контакта."], "explain": "Рост числа операторов и общее удорожание привлечения - сигнал насыщения рынка (риск конкуренции). Нужны персональные условия и QBR, который показывает долгосрочную ценность сотрудничества, а не разовая скидка."}, {"scenario": "Партнёр (казино) уже полгода не получал новых игровых провайдеров через вашу платформу. Retention и средняя длина игровой сессии снижаются, хотя объём трафика остаётся прежним.", "hint": "Трафик тот же, а вовлечённость падает - ищите причину внутри продукта, а не снаружи.", "cat": "prod", "options": ["Продуктовый и технологический риск - составить план по новым игровым провайдерам и честно обсудить сроки обновления каталога.", "Риск конкуренции - предложить custom bonus terms, чтобы удержать игроков.", "Финансовый риск - пересмотреть модель сотрудничества и KPI.", "Регуляторный риск - запросить актуальные compliance-отчёты."], "explain": "Падение retention и длины сессии при стабильном трафике указывает на продуктовый и технологический риск - устаревший каталог игр. Решение - план по новым провайдерам и честная коммуникация сроков, а не маркетинговые меры."}, {"scenario": "У партнёра (казино, недавно на рынке) сменился основной инвестор. Новая команда управления сообщила, что пересматривает приоритеты финансирования маркетинговых активностей на ближайший квартал.", "hint": "Несмотря на смену людей, суть сигнала - в деньгах, а не в личности новых руководителей.", "cat": "fin", "options": ["Финансовый риск - провести financial health-check и подготовить гибкие условия на случай сокращения бюджета.", "Риск команды - быстро онбордить новых руководителей партнёра.", "Продуктовый риск - подготовить roadmap по новым фичам.", "Риск конкуренции - провести QBR с акцентом на ценность сотрудничества."], "explain": "Смена инвестора и пересмотр приоритетов финансирования - в первую очередь финансовый риск, хотя внешне похоже на смену команды. Готовьте financial health-check и гибкие условия заранее, до того как бюджет действительно урежут."}, {"scenario": "Партнёр (покер, СНГ) сообщил о блокировке одного из основных платёжных провайдеров на его маркете. Часть игроков временно не может выводить средства, и партнёр в панике просит быстрое решение.", "hint": "Причина - не в продукте и не в отношениях, а во внешнем платёжном и регуляторном контуре маркета.", "cat": "reg", "options": ["Регуляторный риск - подключить compliance и оперативно организовать альтернативные платёжные методы.", "Продуктовый риск - эскалировать в приоритет баг вывода средств на платформе.", "Риск конкуренции - предложить партнёру персональные бонусные условия.", "Риск команды - заново презентовать ценность сотрудничества."], "explain": "Блокировка платёжного провайдера - типичный регуляторный/платёжный риск для маркетов вроде СНГ. Нужно подключить compliance и заранее иметь план Б по платёжным методам - именно поэтому диверсификация платежей входит в фокус AM для таких гео."}, {"scenario": "Партнёр (казино) на последнем разговоре впервые сформулировал цель не как «рост новой аудитории», а как «удержание существующей базы». При этом заметно снизилась частота запуска новых промо-акций.", "hint": "Смена формулировки цели с «роста» на «удержание» - характерный признак одной конкретной категории риска.", "cat": "mkt", "options": ["Риск трафика и маркетинга - провести аудит воронки привлечения и предложить тест новых каналов и креативов.", "Финансовый риск - провести health-check юнит-экономики.", "Продуктовый риск - подготовить план по новым фичам платформы.", "Регуляторный риск - верифицировать статус лицензии."], "explain": "Смена KPI с роста на удержание и снижение частоты промо - прямой сигнал риска трафика и маркетинга: скорее всего, каналы привлечения перестали работать эффективно. Нужен совместный аудит воронки и тест новых каналов."}, {"scenario": "Партнёр (казино) нанял внешних консультантов по ребрендингу и репозиционированию. При этом вы заметили, что партнёр практически исчез из обсуждений в профильных Telegram-чатах и на форумах, где раньше был заметен.", "hint": "Наём консультантов по репозиционированию и потеря видимости на рынке - это сигнал не про внутренние процессы партнёра.", "cat": "comp", "options": ["Риск конкуренции и рынка - провести анализ УТП и QBR с акцентом на долгосрочную ценность сотрудничества.", "Риск команды - быстро онбордить новый контакт партнёра.", "Регуляторный риск - начать прорабатывать alt-market roadmap.", "Продуктовый риск - подготовить план по новым игровым провайдерам."], "explain": "Наём консультантов по ребрендингу и потеря видимости в отраслевых чатах - сигналы риска конкуренции и рынка: партнёр теряет позиции и ищет способ переизобрести себя. Нужен анализ УТП и QBR, показывающий ценность продолжения сотрудничества."}] },
+    en: { title: "Partner Risk Radar", subtitle: "15 cases · identify the risk category and the AM response · hints optional",
+          q_of: (i,n)=>`Case ${i} of ${n}`, hint_show: "💡 Show hint", hint_hide: "💡 Hide hint",
+          next: "Next case →", results: "See results →", restart: "Start over", correct: "Correct.", wrong: "Not quite.",
+          pct: p=>`${p}% correct`, by_cat: "By risk category",
+          band_great: "Framework mastered - ready to use on real partners", band_ok: "Good result - review the categories where you slipped", band_low: "Worth going back to the module slides and taking the quiz again",
+          questions: [{"scenario": "The partner runs a casino and live poker for an Asian audience, licensed via PAGCOR (Philippines). In the last month the news raised tighter regulation of offshore operators three times, and the partner asked you for the first time about a backup plan in case their license is revoked.", "hint": "The worry here isn't about money or traffic - it's about the legal status of operating in the market.", "cat": "reg", "options": ["Regulatory risk - verify the license status, bring in legal/compliance and start working on an alt-market roadmap.", "Financial risk - run a unit-economics health check and offer flexible payment terms.", "Competition risk - analyse the USP and offer personalised bonus terms.", "Team risk - speed up onboarding of the new contact on the partner's side."], "explain": "Asking for a backup plan in case of license revocation plus a wave of regulator news is a classic regulatory signal. Immediate AM response: verify the license and bring in compliance; medium term: an alt-market roadmap and geo diversification."}, {"scenario": "For the last two months the partner (casino, EU) has been paying invoices 8-10 days later than usual. Asked why, their marketing director vaguely says \"it's a difficult period right now\" and asks to defer the next payment.", "hint": "The key word is \"paying\". This isn't about the regulator or the product.", "cat": "fin", "options": ["Financial risk - run a financial health check and offer flexible payment terms.", "Regulatory risk - bring in legal/compliance to review the terms of cooperation.", "Product risk - escalate bugs to priority and discuss an honest roadmap.", "Competition risk - analyse the USP and offer custom bonus terms."], "explain": "Late payments and vague answers about \"a difficult period\" are a direct financial signal. Start with a health check of the partner's finances and offer flexible terms, instead of just pushing on the due date."}, {"scenario": "Your main contact on the partner's side (poker rooms, CIS) hasn't answered emails for two weeks. On the last call there was a new person who didn't know the history of the partnership or the bonus programme agreements.", "hint": "This signal isn't about money or product - it's about who is now on the other side of the table.", "cat": "team", "options": ["Team & management risk - onboard the new contact fast and re-present the value of the partnership.", "Competition risk - offer exclusive bonus terms to keep the partner.", "Financial risk - move the cooperation model from CPA to revshare.", "Product risk - prepare a plan for new game providers."], "explain": "A new contact who doesn't know the history of the relationship is a classic team & management signal. Onboard the new person quickly and show the value of the partnership again, before the relationship falls apart through lost context."}, {"scenario": "In your partner's market (casino, LatAm) a competitor launched an aggressive bonus campaign with a big welcome package two months ago. The partner now compares your terms with competitors more often and asks for better rakeback.", "hint": "The trigger wasn't the partner's own decision, but a third party's move in the market.", "cat": "comp", "options": ["Competition & market risk - analyse the USP and offer personalised bonus terms.", "Regulatory risk - prepare an alt-market roadmap in case rules tighten.", "Team risk - speed up onboarding of the partner's new contact.", "Product risk - honestly discuss the platform roadmap timeline."], "explain": "Aggressive competitor activity and requests for better terms are a competition & market signal. The right move is a USP analysis and personalised terms, not a rethink of the whole financial model."}, {"scenario": "Over the last month, support tickets about withdrawal problems at the partner (casino, Tier 1) almost doubled. The partner asks for the platform roadmap more often and is getting impatient about timelines.", "hint": "Look at where the complaints come from - the platform itself, not money or marketing.", "cat": "prod", "options": ["Product & tech risk - escalate the bugs to priority and discuss the roadmap honestly.", "Financial risk - offer flexible payment terms for the next quarter.", "Competition risk - offer custom bonus terms to smooth things over.", "Regulatory risk - verify the partner's license status."], "explain": "Growing withdrawal tickets and impatient roadmap requests are a product & tech signal. Prioritise the bugs and communicate timelines honestly, without promising the impossible."}, {"scenario": "The partner (casino, recently launched) has shown negative marketing ROI for the third month in a row. Deposits aren't growing, although the traffic budget hasn't been cut.", "hint": "The same metric hasn't added up for three months - that's a financial signal, not a people or product one.", "cat": "fin", "options": ["Financial risk - run a unit-economics health check and consider revising the model and KPIs.", "Competition risk - run a QBR focused on the long-term value of the partnership.", "Team risk - build relationships on 2+ levels of contacts.", "Product risk - prepare a plan for new game providers."], "explain": "A persistently negative ROI is a financial signal, even if the budget hasn't formally been cut. You need a unit-economics health check and, possibly, a revised cooperation model and KPIs."}, {"scenario": "The partner (poker, Tier 2) launches new marketing campaigns less often. Several key affiliates who used to bring most of the traffic stopped working with the partner in the last two months.", "hint": "Look where activity is dropping - in acquiring new players, not in the existing base.", "cat": "mkt", "options": ["Traffic & marketing risk - run a joint funnel audit and test new channels.", "Regulatory risk - bring in compliance to check market requirements.", "Team risk - re-present the value of the partnership.", "Product risk - escalate platform bugs to priority."], "explain": "Key affiliates leaving and fewer campaigns are a typical traffic & marketing signal. You need a joint funnel audit and new channels, not financial or product measures."}, {"scenario": "The partner plans to expand into several new EU countries. In conversation it turns out their team counted on a single MGA license for the whole EU and hadn't budgeted for the separate requirements of France (ANJ) and Germany (GGL).", "hint": "The confusion isn't about money - it's the dangerous assumption of \"one license for the whole region\".", "cat": "reg", "options": ["Regulatory risk - bring in legal/compliance and check the requirements for each EU country separately.", "Competition risk - offer personalised bonus terms in the new markets.", "Product risk - prepare a plan for new localisation features.", "Financial risk - move the cooperation model from CPA to revshare."], "explain": "EU regulatory fragmentation - MGA doesn't cover France, Germany and other countries with their own regulator - is a classic regulatory risk when entering new geos. Check each jurisdiction's requirements upfront."}, {"scenario": "Two departments merged at the partner's company. After that the partner-marketing budget was cut, and decisions on the partnership are now made by a new head who has never worked with gambling projects.", "hint": "The budget cut is a consequence, not the cause. Look at what changed in the partner's structure.", "cat": "team", "options": ["Team & management risk - re-present the value of the partnership to the new head and build relationships on several levels.", "Financial risk - run an ROI health check and offer a discount for the next quarter.", "Product risk - prepare honest communication on the platform roadmap.", "Regulatory risk - start working on an alt-market roadmap."], "explain": "A reorganisation and a new decision-maker with no gambling experience is a team & management risk, even if it looks financial on the surface (the budget cut). Rebuild the relationship with the new head."}, {"scenario": "In the partner's market (casino, Tier 2) the number of licensed operators almost doubled in a year. The partner notes that player acquisition costs have gone up and competitors offer ever more generous rakeback.", "hint": "This isn't one aggressive competitor - it's the whole market getting saturated.", "cat": "comp", "options": ["Competition & market risk - analyse the USP, offer personalised terms and run a QBR on long-term value.", "Regulatory risk - verify the partner's license status in the market.", "Product risk - escalate platform bugs to priority.", "Team risk - speed up onboarding of a new contact."], "explain": "More operators and more expensive acquisition overall signal market saturation (competition risk). You need personalised terms and a QBR that shows long-term value, not a one-off discount."}, {"scenario": "The partner (casino) hasn't received any new game providers through your platform for six months. Retention and average session length are falling, while traffic volume stays the same.", "hint": "Same traffic, falling engagement - look for the cause inside the product, not outside.", "cat": "prod", "options": ["Product & tech risk - build a plan for new game providers and honestly discuss the catalogue update timeline.", "Competition risk - offer custom bonus terms to keep players.", "Financial risk - revise the cooperation model and KPIs.", "Regulatory risk - request up-to-date compliance reports."], "explain": "Falling retention and session length with stable traffic point to a product & tech risk - an outdated game catalogue. The fix is a plan for new providers and honest timelines, not marketing measures."}, {"scenario": "The partner (casino, new to the market) has a new main investor. The new management team says it is reviewing funding priorities for marketing for the coming quarter.", "hint": "Despite the new people, the core of the signal is money, not the personalities of the new leaders.", "cat": "fin", "options": ["Financial risk - run a financial health check and prepare flexible terms in case the budget is cut.", "Team risk - onboard the partner's new leaders quickly.", "Product risk - prepare a roadmap of new features.", "Competition risk - run a QBR focused on the value of the partnership."], "explain": "A new investor reviewing funding priorities is first of all a financial risk, even though it looks like a team change. Prepare the health check and flexible terms early, before the budget actually gets cut."}, {"scenario": "The partner (poker, CIS) reports that one of the main payment providers in their market got blocked. Some players temporarily can't withdraw, and the partner is panicking and asking for a quick fix.", "hint": "The cause isn't the product or the relationship - it's the market's external payment and regulatory environment.", "cat": "reg", "options": ["Regulatory risk - bring in compliance and quickly set up alternative payment methods.", "Product risk - escalate the platform withdrawal bug to priority.", "Competition risk - offer the partner personalised bonus terms.", "Team risk - re-present the value of the partnership."], "explain": "A blocked payment provider is a typical regulatory/payment risk for markets like the CIS. Bring in compliance and have a plan B for payment methods in advance - that's why payment diversification is an AM focus for such geos."}, {"scenario": "On the last call the partner (casino) for the first time framed the goal not as \"growing a new audience\" but as \"retaining the existing base\". New promos have also become noticeably less frequent.", "hint": "A goal shifting from \"growth\" to \"retention\" is a telltale sign of one specific risk category.", "cat": "mkt", "options": ["Traffic & marketing risk - audit the acquisition funnel and propose testing new channels and creatives.", "Financial risk - run a unit-economics health check.", "Product risk - prepare a plan for new platform features.", "Regulatory risk - verify the license status."], "explain": "A KPI shift from growth to retention plus fewer promos is a direct traffic & marketing signal: most likely the acquisition channels stopped working. Do a joint funnel audit and test new channels."}, {"scenario": "The partner (casino) hired external rebranding and repositioning consultants. At the same time you notice the partner has practically disappeared from industry Telegram chats and forums where they used to be visible.", "hint": "Hiring repositioning consultants and losing market visibility is not a signal about the partner's internal processes.", "cat": "comp", "options": ["Competition & market risk - analyse the USP and run a QBR focused on the long-term value of the partnership.", "Team risk - onboard the partner's new contact quickly.", "Regulatory risk - start working on an alt-market roadmap.", "Product risk - prepare a plan for new game providers."], "explain": "Rebranding consultants and lost visibility in industry chats signal competition & market risk: the partner is losing ground and looking to reinvent itself. Analyse the USP and run a QBR that shows the value of continuing the partnership."}] }
+  };
+  const rqState = { current: 0, score: 0, answered: [], hint: false, order: [] };
+  function rqShuffle(){
+    rqState.order = RISK_RADAR.ru.questions.map(q=>{
+      const idx = q.options.map((_, i)=>i);
+      for(let i = idx.length - 1; i > 0; i--){ const j = Math.floor(Math.random()*(i+1)); [idx[i], idx[j]] = [idx[j], idx[i]]; }
+      return idx;
+    });
+  }
+  rqShuffle();
+  function rqSlot(){ return document.querySelector('.risk-radar-slot[data-mod="7"]'); }
+  function rqResize(){
+    document.querySelectorAll('.module.open .module-body').forEach(body=>{ body.style.maxHeight = body.scrollHeight + 'px'; });
+  }
+  function renderRiskRadar(){
+    const slot = rqSlot(); if(!slot) return;
+    const D = RISK_RADAR[currentLang] || RISK_RADAR.en;
+    const Q = D.questions;
+    if(rqState.current >= Q.length){ rqRenderResults(slot); return; }
+    const q = Q[rqState.current];
+    const order = rqState.order[rqState.current];
+    const letters = currentLang === 'ru' ? ['А','Б','В','Г'] : ['A','B','C','D'];
+    const sel = rqState.answered[rqState.current];
+    const isAnswered = sel !== undefined;
+    const optsHtml = order.map((oi, pos)=>{
+      let cls = 'wq-opt';
+      if(isAnswered){ if(oi === 0) cls += ' correct'; else if(oi === sel) cls += ' wrong'; else cls += ' neutral'; }
+      const click = isAnswered ? '' : `onclick="rqAnswer(${oi})"`;
+      return `<div class="${cls}" ${click}><div class="wq-opt-letter">${letters[pos]}</div><div class="wq-opt-text">${escapeHtml(q.options[oi])}</div></div>`;
+    }).join('');
+    const cat = RISK_CATS[q.cat];
+    const done = rqState.answered.filter(a => a !== undefined).length;
+    const fb = isAnswered ? `<div class="wq-feedback ${sel === 0 ? 'wq-fb-ok' : 'wq-fb-err'}"><b>${escapeHtml(sel === 0 ? D.correct : D.wrong)}</b> ${escapeHtml(q.explain)}<br><span class="rq-cat-tag" style="background:${cat.color}">${escapeHtml(cat[currentLang] || cat.en)}</span></div>` : '';
+    const hint = (!isAnswered && rqState.hint) ? `<div class="rq-hint">${escapeHtml(q.hint)}</div>` : '';
+    const hintBtn = isAnswered ? '' : `<button class="rq-hint-btn" onclick="rqToggleHint()">${escapeHtml(rqState.hint ? D.hint_hide : D.hint_show)}</button>`;
+    slot.innerHTML = `
+      <div class="wq-block">
+        <div class="wq-header"><div class="wq-title">📡 ${escapeHtml(D.title)}</div><div class="wq-subtitle">${escapeHtml(D.subtitle)}</div></div>
+        <div class="wq-prog-row"><div class="wq-prog-bar"><div class="wq-prog-fill" style="width:${Math.round(done/Q.length*100)}%"></div></div><div class="wq-prog-lbl">${done} / ${Q.length}</div></div>
+        <div class="wq-card">
+          <div class="wq-meta"><span class="wq-num">${escapeHtml(D.q_of(rqState.current+1, Q.length))}</span></div>
+          <div class="wq-text">${escapeHtml(q.scenario)}</div>
+          ${hintBtn}${hint}
+          <div class="wq-opts">${optsHtml}</div>
+          ${fb}
+        </div>
+        <div class="wq-nav-row">
+          ${isAnswered && rqState.current < Q.length-1 ? `<button class="btn-unlock" onclick="rqNext()">${escapeHtml(D.next)}</button>` : ''}
+          ${isAnswered && rqState.current === Q.length-1 ? `<button class="btn-unlock" onclick="rqNext()">${escapeHtml(D.results)}</button>` : ''}
+        </div>
+      </div>`;
+    rqResize();
+  }
+  function rqAnswer(oi){
+    event.stopPropagation();
+    if(rqState.answered[rqState.current] !== undefined) return;
+    rqState.answered[rqState.current] = oi;
+    if(oi === 0) rqState.score++;
+    renderRiskRadar();
+  }
+  function rqToggleHint(){ event.stopPropagation(); rqState.hint = !rqState.hint; renderRiskRadar(); }
+  function rqNext(){ event.stopPropagation(); rqState.current++; rqState.hint = false; renderRiskRadar(); }
+  function rqRestart(){ event.stopPropagation(); rqState.current = 0; rqState.score = 0; rqState.answered = []; rqState.hint = false; rqShuffle(); renderRiskRadar(); }
+  function rqRenderResults(slot){
+    const D = RISK_RADAR[currentLang] || RISK_RADAR.en;
+    const Q = D.questions;
+    const pct = Math.round(rqState.score / Q.length * 100);
+    let band, cls;
+    if(rqState.score >= 13){ band = D.band_great; cls = 'wq-band-great'; }
+    else if(rqState.score >= 9){ band = D.band_ok; cls = 'wq-band-ok'; }
+    else { band = D.band_low; cls = 'wq-band-low'; }
+    const rows = RISK_CAT_ORDER.map(k=>{
+      const total = Q.filter(q=>q.cat===k).length;
+      const ok = Q.filter((q,i)=>q.cat===k && rqState.answered[i]===0).length;
+      const c = RISK_CATS[k];
+      return `<div class="rq-bd-row"><span class="hc-dot" style="background:${c.color}"></span><span>${escapeHtml(c[currentLang] || c.en)}</span><span class="wq-prog-lbl">${ok}/${total}</span></div>
+              <div class="rq-bd-bar"><div style="width:${total ? ok/total*100 : 0}%; background:${c.color}"></div></div>`;
+    }).join('');
+    slot.innerHTML = `
+      <div class="wq-block">
+        <div class="wq-header"><div class="wq-title">📡 ${escapeHtml(D.title)}</div></div>
+        <div class="wq-results">
+          <div class="wq-res-score">${rqState.score} / ${Q.length}</div>
+          <div class="wq-res-sub">${escapeHtml(D.pct(pct))}</div>
+          <div class="wq-res-band ${cls}">${escapeHtml(band)}</div>
+          <div class="wq-subtitle" style="margin-bottom:10px">${escapeHtml(D.by_cat)}</div>
+          <div class="rq-breakdown">${rows}</div>
+          <button class="btn-unlock" onclick="rqRestart()">${escapeHtml(D.restart)}</button>
+        </div>
+      </div>`;
+    rqResize();
+  }
+
+  const M7_QUESTIONS = {"ru": [{"cat": "reg", "title": "Регуляторный риск, конкуренция и рынок · профиль маркета", "qs": ["На каком маркете (или маркетах) планирует работать партнёр?", "Какой регулятор действует и какие у него требования к лицензии?", "Насколько высока конкуренция на этом маркете в выбранной вертикали?"]}, {"cat": "fin", "title": "Финансовый риск · финансовая устойчивость", "qs": ["Какие источники фондирования у партнёра?", "Есть ли история задержек платежей у партнёра с другими подрядчиками?", "Какая бизнес-модель монетизации (казино/покер, rake/GGR-share)?"]}, {"cat": "prod", "title": "Продукт и технологии · продуктовая готовность", "qs": ["Какие интеграции нужны для запуска и на каком они этапе?", "Реалистичны ли заявленные сроки запуска с технической точки зрения?", "Есть ли у партнёра опыт запуска аналогичных продуктов?"]}, {"cat": "mkt", "title": "Трафик и маркетинг · маркетинговая стратегия", "qs": ["Какие источники трафика планирует использовать партнёр?", "Насколько реалистичны заявленные CPA и ROI на этом маркете?", "Есть ли у партнёра собственная база или он полностью зависит от внешнего трафика?"]}, {"cat": "team", "title": "Команда и менеджмент · команда партнёра", "qs": ["Кто ЛПР со стороны партнёра и насколько быстро принимаются решения?", "Есть ли у команды опыт в гемблинг-индустрии?", "Насколько стабильна команда (нет ли признаков текучки на ключевых позициях)?"]}], "en": [{"cat": "reg", "title": "Regulatory, competition & market · market profile", "qs": ["Which market (or markets) is the partner planning to operate in?", "Which regulator applies there, and what are its license requirements?", "How intense is the competition in that market for the chosen vertical?"]}, {"cat": "fin", "title": "Financial risk · financial stability", "qs": ["What are the partner's sources of funding?", "Does the partner have a history of paying other contractors late?", "What's the monetisation model (casino/poker, rake/GGR share)?"]}, {"cat": "prod", "title": "Product & tech · product readiness", "qs": ["Which integrations are needed for launch, and what stage are they at?", "Is the announced launch date technically realistic?", "Has the partner launched similar products before?"]}, {"cat": "mkt", "title": "Traffic & marketing · marketing strategy", "qs": ["Which traffic sources is the partner planning to use?", "How realistic are the stated CPA and ROI for this market?", "Does the partner have its own player base, or does it depend entirely on external traffic?"]}, {"cat": "team", "title": "Team & management · the partner's team", "qs": ["Who is the decision-maker on the partner's side, and how fast are decisions made?", "Does the team have experience in the gambling industry?", "How stable is the team (any signs of churn in key roles)?"]}]};
+  function m7QuestionsHtml(){
+    const t = I18N[currentLang];
+    const groups = (M7_QUESTIONS[currentLang] || M7_QUESTIONS.en).map(g=>{
+      const c = RISK_CATS[g.cat];
+      return `<div class="m7-q-group"><div class="m7-q-head"><span class="hc-dot" style="background:${c.color}"></span>${escapeHtml(g.title)}</div>
+        <ol class="m7-q-list">${g.qs.map(q=>`<li>${escapeHtml(q)}</li>`).join('')}</ol></div>`;
+    }).join('');
+    return `<div class="m7-card">
+      <div class="m7-card-title">❓ ${escapeHtml(t.module7_q_title)}</div>
+      <div class="m7-card-sub">${escapeHtml(t.module7_q_sub)}</div>
+      ${groups}
+      <div class="m7-q-actions">
+        <button class="btn-unlock" onclick="openKbRiskPlaybook()">${escapeHtml(t.module7_q_open)}</button>
+        <a class="m7-q-link" href="downloads/risk-assessment-before-kickoff-ru.docx" download onclick="event.stopPropagation()">⬇ ${escapeHtml(t.module7_q_download)}</a>
+      </div>
+    </div>`;
+  }
+  function m7HomeworkHtml(){
+    const t = I18N[currentLang];
+    const items = [1,2,3,4,5,6].map(i=>`<li>${escapeHtml(t['module7_hw_' + i])}</li>`).join('');
+    return `<div class="m7-card"><div class="m7-card-title">${escapeHtml(t.module7_hw_title)}</div>
+      <div class="m7-card-sub">${escapeHtml(t.module7_hw_sub)}</div><ol class="m7-hw-list">${items}</ol></div>`;
+  }
+  function openKbRiskPlaybook(){
+    if(typeof event !== 'undefined' && event) event.stopPropagation();
+    showPage('kb');
+    setTimeout(()=>{
+      const card = document.getElementById('kb-card-playbooks');
+      if(card) kbShowSection('playbooks', card);
+      const d = document.getElementById('kb-playbook-4');
+      if(d){ d.open = true; setTimeout(()=>d.scrollIntoView({behavior:'smooth', block:'start'}), 120); }
+    }, 80);
+  }
+
+  const hcState = { checked: {}, critical: false };
+  function renderHealthCheck(){
+    const slot = document.querySelector('.health-check-slot[data-mod="7"]'); if(!slot) return;
+    const t = I18N[currentLang];
+    const sig = RISK_SIGNALS[currentLang] || RISK_SIGNALS.en;
+    const cards = RISK_CAT_ORDER.map(k=>{
+      const c = RISK_CATS[k];
+      const n = sig[k].filter((_, i)=>hcState.checked[k+i]).length;
+      const items = sig[k].map((txt, i)=>{
+        const on = !!hcState.checked[k+i];
+        return `<label class="hc-item ${on ? 'checked' : ''}" onclick="event.stopPropagation()"><input type="checkbox" ${on ? 'checked' : ''} onchange="hcToggle('${k}${i}')"><span>${escapeHtml(txt)}</span></label>`;
+      }).join('');
+      return `<div class="hc-cat"><div class="hc-cat-name"><span class="hc-dot" style="background:${c.color}"></span>${escapeHtml(c[currentLang] || c.en)}<span class="hc-cat-count">${n}/4</span></div>${items}</div>`;
+    }).join('');
+    const total = Object.values(hcState.checked).filter(Boolean).length;
+    let st = 'green';
+    if(hcState.critical || total >= 3) st = 'red'; else if(total >= 1) st = 'yellow';
+    slot.innerHTML = `
+      <div class="m7-card">
+        <div class="m7-card-title">🩺 ${escapeHtml(t.module7_hc_title)}</div>
+        <div class="m7-card-sub">${escapeHtml(t.module7_hc_sub)}</div>
+        <div class="hc-grid">${cards}</div>
+        <div class="hc-footer">
+          <div class="hc-status ${st}">${escapeHtml(t['module7_hc_status_' + st])}</div>
+          <label class="hc-crit" onclick="event.stopPropagation()"><input type="checkbox" ${hcState.critical ? 'checked' : ''} onchange="hcCritical(this.checked)">${escapeHtml(t.module7_hc_critical)}</label>
+          <button class="hc-reset" onclick="hcReset()">${escapeHtml(t.module7_hc_reset)}</button>
+        </div>
+      </div>`;
+    rqResize();
+  }
+  function hcToggle(key){ hcState.checked[key] = !hcState.checked[key]; renderHealthCheck(); }
+  function hcCritical(v){ hcState.critical = v; renderHealthCheck(); }
+  function hcReset(){ event.stopPropagation(); hcState.checked = {}; hcState.critical = false; renderHealthCheck(); }
+
   function setPracticeMode(mode){
     practiceMode = mode;
     document.getElementById('mode-btn-solo').classList.toggle('active', mode === 'solo');
@@ -7120,6 +7498,8 @@ function duelRefreshLang(){
     renderPracticeBlocks();
     renderDeckBlocks();
     renderWorkshopQuiz();
+    renderHealthCheck();
+    renderRiskRadar();
     duelRefreshLang();
   }
 
@@ -7555,13 +7935,13 @@ function duelRefreshLang(){
     const duelLock = document.getElementById('nav-duel-lock');
     if(duelLock) duelLock.style.display = isAnnual ? 'none' : '';
 
-    // Sequential unlock: module N (2..6) stays locked until module N-1
-    // has been marked complete. Module 1 is always open; module 7 is a
+    // Sequential unlock: module N (2..7) stays locked until module N-1
+    // has been marked complete. Module 1 is always open; module 8 is a
     // static "in development" teaser and isn't part of this chain.
     // (Bypassed entirely while TESTING_MODE_SKIP_PAYMENT is on.)
     document.querySelectorAll('.module[data-mod]').forEach(mod=>{
       const n = parseInt(mod.dataset.mod, 10);
-      if(!n || n < 2 || n > 6) return;
+      if(!n || n < 2 || n > 7) return;
       const prevDone = TESTING_MODE_SKIP_PAYMENT || !!state[n-1];
       mod.classList.toggle('progress-locked', !prevDone);
       if(prevDone && mod.classList.contains('open') === false){ /* no-op, kept for clarity */ }
@@ -7699,7 +8079,7 @@ function duelRefreshLang(){
     const done = Object.values(state).filter(Boolean).length;
     const dict = I18N[currentLang];
     document.getElementById('progress-label').textContent = dict.progress_prefix + done + dict.progress_suffix;
-    document.getElementById('progress-fill').style.width = (done/6*100) + '%';
+    document.getElementById('progress-fill').style.width = (done/7*100) + '%';
     document.querySelectorAll('.suit-track span').forEach(s=>{
       const n = parseInt(s.dataset.suit,10);
       s.classList.toggle('done', !!state[n]);
@@ -7707,7 +8087,7 @@ function duelRefreshLang(){
     const ring = document.getElementById('badge-ring');
     const msg = document.getElementById('completion-msg');
     const certBtn = document.getElementById('btn-get-cert');
-    if(done === 6){
+    if(done === 7){
       ring.classList.add('unlocked');
       msg.textContent = dict.completion_full;
       certBtn.classList.add('show');
@@ -7718,7 +8098,7 @@ function duelRefreshLang(){
       }
     } else {
       ring.classList.remove('unlocked');
-      msg.textContent = done > 0 ? (6-done) + dict.completion_progress : '';
+      msg.textContent = done > 0 ? (7-done) + dict.completion_progress : '';
       certBtn.classList.remove('show');
     }
   }
